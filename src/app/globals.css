@@ -1,0 +1,344 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #FAF7EF;
+  --foreground: #1A2A23;
+  --muted: #3D5A49;
+  --border: #C4BEA8;
+  --card: rgba(250, 247, 239, 0.92);
+  --card-hover: rgba(245, 241, 230, 0.98);
+  --pine: #1E4634;
+  --forest: #2C5E47;
+  --sage: #6E8B3D;
+  --gold: #B7A24B;
+  --lime: #C2CB52;
+  --cream: #F5F1E6;
+  --bone: #FAF7EF;
+  --ink: #1A2A23;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 17px;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  line-height: 1.65;
+}
+
+/* ── Animations ───────────────────────────────────── */
+
+@keyframes spinIn {
+  0%   { opacity: 0; transform: rotate(-18deg) scale(0.92); }
+  100% { opacity: 1; transform: rotate(0deg) scale(1); }
+}
+
+@keyframes slowSpin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(18px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes floatLine {
+  0%   { transform: translateX(-3%) translateY(0px); }
+  50%  { transform: translateX(3%) translateY(-9px); }
+  100% { transform: translateX(-3%) translateY(0px); }
+}
+
+@keyframes floatUp {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-14px); }
+}
+
+@keyframes sparkle {
+  0%, 100% { opacity: 0.10; transform: scale(1); }
+  50%       { opacity: 0.40; transform: scale(1.35); }
+}
+
+@keyframes glowPulse {
+  0%, 100% { opacity: 0.28; transform: scale(1); }
+  50%       { opacity: 0.50; transform: scale(1.06); }
+}
+
+@keyframes drawStroke {
+  from { stroke-dashoffset: 800; }
+  to   { stroke-dashoffset: 0; }
+}
+
+@keyframes slideInLeft {
+  from { opacity: 0; transform: translateX(-24px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+/* ── Animation utility classes ────────────────────── */
+
+.animate-float-line {
+  animation: floatLine var(--dur, 14s) ease-in-out infinite;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+.animate-float-up {
+  animation: floatUp var(--dur, 9s) ease-in-out infinite;
+}
+
+.animate-sparkle {
+  animation: sparkle var(--dur, 4s) ease-in-out infinite;
+}
+
+.animate-glow-pulse {
+  animation: glowPulse 6s ease-in-out infinite;
+}
+
+.animate-spin-in {
+  animation: spinIn 1.6s cubic-bezier(0.34, 1.2, 0.64, 1) forwards;
+}
+
+.animate-slow-spin {
+  animation: slowSpin 120s linear infinite;
+  transform-origin: center;
+}
+
+.animate-fade-up {
+  opacity: 0;
+  animation: fadeUp 0.9s ease forwards;
+}
+
+.animate-fade-in {
+  opacity: 0;
+  animation: fadeIn 0.85s ease forwards;
+}
+
+.animate-draw-stroke {
+  stroke-dasharray: 800;
+  stroke-dashoffset: 800;
+  animation: drawStroke 2.2s ease forwards;
+}
+
+.animate-slide-in-left {
+  opacity: 0;
+  animation: slideInLeft 0.8s ease forwards;
+}
+
+/* ── Prose / editorial styles ─────────────────────── */
+
+.prose-osf h2 {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 2rem;
+  line-height: 1.25;
+  color: var(--ink);
+  margin-bottom: 1rem;
+}
+
+.prose-osf p {
+  color: var(--muted);
+  line-height: 1.8;
+  margin-bottom: 1.25rem;
+}
+
+/* ── Glass card base ──────────────────────────────── */
+
+.glass-card {
+  background: var(--card);
+  backdrop-filter: blur(8px);
+  border: 1.5px solid var(--border);
+  border-radius: 18px;
+  transition: border-color 0.22s ease, box-shadow 0.22s ease, transform 0.22s ease;
+}
+
+.glass-card:hover {
+  border-color: rgba(110, 139, 61, 0.55);
+  box-shadow: 0 8px 36px rgba(30, 70, 52, 0.12);
+  transform: translateY(-2px);
+}
+
+/* ── Feature card — vibrant green outline ─────────── */
+
+.feature-card {
+  background: var(--card);
+  backdrop-filter: blur(8px);
+  border: 2px solid rgba(110, 139, 61, 0.35);
+  border-radius: 18px;
+  transition: border-color 0.22s ease, box-shadow 0.22s ease, transform 0.22s ease;
+  position: relative;
+}
+
+.feature-card::before {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  border-radius: 19px;
+  background: linear-gradient(135deg, rgba(110,139,61,0.18) 0%, rgba(183,162,75,0.10) 100%);
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.22s ease;
+}
+
+.feature-card:hover {
+  border-color: rgba(110, 139, 61, 0.75);
+  box-shadow: 0 8px 40px rgba(30, 70, 52, 0.15), 0 0 0 1px rgba(110,139,61,0.2);
+  transform: translateY(-3px);
+}
+
+.feature-card:hover::before {
+  opacity: 1;
+}
+
+/* ── Photo placeholders ────────────────────────── */
+
+.photo-placeholder {
+  position: relative;
+  overflow: hidden;
+  border-radius: 18px;
+  background:
+    linear-gradient(145deg,
+      #0D1D12 0%,
+      #162B1E 18%,
+      #1E4634 38%,
+      #265840 55%,
+      #2E5E42 72%,
+      #3A5E38 85%,
+      #445C2E 100%
+    );
+}
+
+.photo-placeholder::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 70% 80% at 20% 72%, rgba(94,130,62,0.28) 0%, transparent 52%),
+    radial-gradient(ellipse 55% 55% at 85% 18%, rgba(183,162,75,0.14) 0%, transparent 48%),
+    radial-gradient(ellipse 90% 28% at 50% 100%, rgba(8,18,12,0.5) 0%, transparent 55%),
+    radial-gradient(ellipse 40% 40% at 62% 42%, rgba(110,139,61,0.1) 0%, transparent 42%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ── Stats display ──────────────────────────────── */
+
+.stat-value {
+  font-family: var(--font-playfair), Georgia, serif;
+  font-weight: 700;
+  line-height: 1.0;
+  letter-spacing: -0.03em;
+  color: #C2CB52;
+}
+
+.stat-divider {
+  width: 1px;
+  background: rgba(245,241,230,0.1);
+  align-self: stretch;
+}
+
+/* ── Partner logo slots ─────────────────────────── */
+
+.logo-slot {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  border: 1.5px dashed rgba(30,70,52,0.22);
+  border-radius: 14px;
+  padding: 20px 18px;
+  min-height: 80px;
+  background: var(--card);
+  transition: border-color 0.22s ease, background 0.22s ease, box-shadow 0.22s ease, transform 0.22s ease;
+  cursor: default;
+}
+
+.logo-slot:hover {
+  border-color: rgba(110,139,61,0.45);
+  background: rgba(110,139,61,0.05);
+  box-shadow: 0 4px 16px rgba(30,70,52,0.08);
+  transform: translateY(-1px);
+}
+
+/* ── Scroll reveal ───────────────────────────────── */
+
+@keyframes revealUp {
+  from { opacity: 0; transform: translateY(28px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.reveal-up {
+  opacity: 0;
+  animation: revealUp 0.85s cubic-bezier(0.34, 1.0, 0.64, 1) forwards;
+}
+
+/* ── Overline tag (section label) ─────────────────── */
+
+.overline-tag {
+  display: inline-block;
+  font-family: var(--font-inter), sans-serif;
+  font-size: 0.7rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+
+/* ── Section divider lines ───────────────────────── */
+
+.ruled-top {
+  border-top: 1px solid var(--border);
+}
+
+/* ── Pill badge ──────────────────────────────────── */
+
+.pill-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-family: var(--font-inter), sans-serif;
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  padding: 5px 14px;
+  border-radius: 99px;
+  border: 1px solid rgba(110,139,61,0.28);
+  background: rgba(110,139,61,0.09);
+  color: var(--sage);
+}
+
+/* ── Dark section glass card ─────────────────────── */
+
+.glass-card-dark {
+  background: rgba(20,50,34,0.55);
+  backdrop-filter: blur(10px);
+  border: 1.5px solid rgba(255,255,255,0.08);
+  border-radius: 18px;
+  transition: border-color 0.22s ease, box-shadow 0.22s ease, transform 0.22s ease;
+}
+
+.glass-card-dark:hover {
+  border-color: rgba(194,203,82,0.25);
+  box-shadow: 0 8px 36px rgba(0,0,0,0.22);
+  transform: translateY(-2px);
+}
+
+/* ── Refined scrollbar ──────────────────────────── */
+
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb {
+  background: rgba(30,70,52,0.3);
+  border-radius: 99px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(30,70,52,0.5);
+}

@@ -56,6 +56,7 @@ export default function About() {
 
           <div className="flex flex-col gap-4">
             <PhotoBlock
+              src="/photos/hq-team.png"
               label="Open Systems Foundation · Headquarters & team"
               variant="landscape"
               style={{ borderRadius: '18px' }}
@@ -89,6 +90,7 @@ export default function About() {
         <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
           <div className="order-2 md:order-1">
             <PhotoBlock
+              src="/photos/openearth-landscape.png"
               label="Open Earth · Landscape & regeneration"
               variant="landscape"
               style={{ borderRadius: '18px' }}
@@ -163,6 +165,7 @@ export default function About() {
               We take a systematic yet organic approach — combining proven methods with emergent practice. Initiatives are developed and matured through our CreActive Design Lab, and integrate into the ecosystem through open frameworks that let projects participate while keeping their own identity and purpose.
             </p>
             <PhotoBlock
+              src="/photos/creactive-lab.png"
               label="CreActive Design Lab · Process & collaboration"
               variant="wide"
               style={{ borderRadius: '14px', marginTop: '1.5rem' }}
@@ -179,8 +182,8 @@ export default function About() {
               The Open Systems Foundation is established as a charitable foundation in Vaduz, Liechtenstein, under the Liechtenstein Persons and Companies Act (PGR). Its purpose is exclusively and irrevocably charitable: catalysing humanity&apos;s transition toward an Open Earth across environmental regeneration, open knowledge and education, scientific research and innovation, and global collaborative infrastructure.
             </p>
             <div className="mt-8 flex flex-wrap gap-4">
-              <a href="/team" className="inline-flex items-center px-7 py-3 rounded-full font-body font-medium text-sm transition-all hover:shadow-md" style={{ background: 'var(--pine)', color: '#F5F1E6' }}>
-                Meet the team
+              <a href="/projects" className="inline-flex items-center px-7 py-3 rounded-full font-body font-medium text-sm transition-all hover:shadow-md" style={{ background: 'var(--pine)', color: '#F5F1E6' }}>
+                Explore our work
               </a>
               <a href="/resources" className="inline-flex items-center px-7 py-3 rounded-full font-body font-medium text-sm transition-all hover:opacity-70" style={{ border: '1px solid var(--border)', color: 'var(--pine)' }}>
                 Governance documents →

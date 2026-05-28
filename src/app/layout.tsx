@@ -6,6 +6,7 @@ import Image from "next/image";
 import SketchFilter from "@/components/SketchFilter";
 import InteriorBackground from "@/components/InteriorBackground";
 import NavBar from "@/components/NavBar";
+import SubscribeForm from "@/components/SubscribeForm";
 
 const playfair = Playfair_Display({
   subsets: ["latin"],
@@ -55,24 +56,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                   Updates on projects, ideas, and the evolution of the Open Earth.
                 </p>
               </div>
-              <div className="flex gap-2 w-full md:w-auto">
-                <input
-                  type="email"
-                  placeholder="your@email.com"
-                  className="flex-1 md:w-64 px-4 py-2.5 rounded-full text-sm font-body outline-none"
-                  style={{
-                    background: "rgba(245,241,230,0.07)",
-                    border: "1px solid rgba(245,241,230,0.14)",
-                    color: "#F5F1E6",
-                  }}
-                />
-                <button
-                  type="button"
-                  className="px-6 py-2.5 rounded-full text-sm font-body font-semibold transition-all hover:scale-[1.02]"
-                  style={{ background: "#C2CB52", color: "#1A2A23" }}
-                >
-                  Subscribe
-                </button>
+              <div className="w-full md:w-auto">
+                <SubscribeForm variant="footer" source="footer" />
               </div>
             </div>
           </div>
@@ -155,7 +140,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               <ul className="space-y-3">
                 {[
                   { href: "/about",    label: "About" },
-                  { href: "/team",     label: "Team" },
                   { href: "/culture",  label: "Culture" },
                   { href: "/journal",  label: "Journal" },
                 ].map((l) => (
@@ -200,7 +184,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           >
             <p>© {new Date().getFullYear()} Open Systems Foundation. Content licensed CC BY-SA 4.0.</p>
             <div className="flex gap-6">
-              <Link href="#" className="hover:opacity-70 transition-opacity">Privacy</Link>
+              <Link href="/privacy" className="hover:opacity-70 transition-opacity">Privacy</Link>
               <Link href="/resources" className="hover:opacity-70 transition-opacity">Governance</Link>
             </div>
           </div>

@@ -145,7 +145,7 @@ export default function Manifesto() {
           </p>
           <div className="flex flex-wrap justify-center gap-4">
             <a
-              href="#"
+              href="/downloads/Open_Earth_Manifesto_v1.11.pdf"
               className="inline-flex items-center px-8 py-3 rounded-full font-body font-medium text-sm transition-all hover:shadow-md"
               style={{ background: 'var(--pine)', color: '#F5F1E6' }}
             >

@@ -7,6 +7,7 @@ import SketchFilter from "@/components/SketchFilter";
 import InteriorBackground from "@/components/InteriorBackground";
 import NavBar from "@/components/NavBar";
 import SubscribeForm from "@/components/SubscribeForm";
+import CursorFlow from "@/components/CursorFlow";
 
 const playfair = Playfair_Display({
   subsets: ["latin"],
@@ -31,6 +32,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body className="min-h-screen font-body" style={{ background: "var(--background)", color: "var(--foreground)" }}>
         <SketchFilter />
         <InteriorBackground />
+        <CursorFlow />
 
         <NavBar />
 

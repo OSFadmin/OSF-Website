@@ -42,12 +42,6 @@ const initiatives = [
     desc: 'A freely forkable cultural commons — the Open Philosophy in action. Five applied, living pillars that any community or organisation can adopt, adapt, and improve.',
     href: '/culture',
   },
-  {
-    tag: 'Foundation initiative',
-    title: 'CreActive Design Lab',
-    desc: 'The methodology and accelerator that develops and matures new initiatives within the Open Earth ecosystem — bridging imagination and implementation.',
-    href: '/about',
-  },
 ];
 
 const statusColors: Record<string, string> = {
@@ -235,16 +229,6 @@ export default function Projects() {
                 </span>
               </Link>
             ))}
-
-            {/* Placeholder slot */}
-            <div
-              className="glass-card p-8 flex items-center justify-center"
-              style={{ border: '1.5px dashed var(--border)', background: 'transparent' }}
-            >
-              <p className="font-body text-sm text-center" style={{ color: 'var(--muted)' }}>
-                The project grid is designed to grow.<br />More initiatives coming.
-              </p>
-            </div>
           </div>
         </div>
       </section>

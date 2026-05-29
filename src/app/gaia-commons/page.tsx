@@ -52,11 +52,16 @@ export default function GaiaCommons() {
           </p>
           <div className="animate-fade-up flex flex-wrap justify-center gap-4" style={{ animationDelay: '0.65s' }}>
             <a
-              href="#explore"
-              className="inline-flex items-center px-9 py-3.5 rounded-full font-body font-semibold text-sm tracking-wide transition-all hover:shadow-lg"
+              href="https://gaiacommons.net"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-9 py-3.5 rounded-full font-body font-semibold text-sm tracking-wide transition-all hover:shadow-lg"
               style={{ background: '#C2CB52', color: '#1A2A23' }}
             >
-              Explore the commons
+              Dedicated Website
+              <svg viewBox="0 0 24 24" width="15" height="15" fill="none" aria-hidden="true">
+                <path d="M7 17 L17 7 M9 7 h8 v8" stroke="#1A2A23" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
             </a>
             <Link
               href="/projects"
@@ -108,22 +113,49 @@ export default function GaiaCommons() {
               {
                 title: 'Align purpose and innovation',
                 desc: 'Align personal growth and shared purpose with innovation in governance, technology, and the way we organise — weaving wisdom with cutting-edge practice.',
-                icon: '◯',
+                icon: (
+                  <svg viewBox="0 0 36 36" width="28" fill="none">
+                    <circle cx="18" cy="18" r="13" stroke="#6E8B3D" strokeWidth="1.4" />
+                    <path d="M18 5 L21 18 L18 31 L15 18 Z" stroke="#B7A24B" strokeWidth="1.3" />
+                    <path d="M5 18 L18 15 L31 18 L18 21 Z" stroke="#C2CB52" strokeWidth="1.1" />
+                    <circle cx="18" cy="18" r="2" fill="#B7A24B" />
+                  </svg>
+                ),
               },
               {
                 title: 'Weave regenerative cultures',
                 desc: 'Bring ecological wellbeing, cultural diversity, and social fairness together into a tapestry of regenerative cultures.',
-                icon: '◇',
+                icon: (
+                  <svg viewBox="0 0 36 36" width="28" fill="none">
+                    <path d="M6 14 C6 9 12 9 18 14 C24 19 30 19 30 14" stroke="#6E8B3D" strokeWidth="1.4" strokeLinecap="round" />
+                    <path d="M6 22 C6 27 12 27 18 22 C24 17 30 17 30 22" stroke="#B7A24B" strokeWidth="1.4" strokeLinecap="round" />
+                    <path d="M18 9 C21 12 21 15 18 18 C15 15 15 12 18 9 Z" stroke="#C2CB52" strokeWidth="1.1" />
+                  </svg>
+                ),
               },
               {
                 title: 'Transform how we coordinate',
                 desc: 'Transform how we produce, build, and coordinate — while inspiring a deeper sense of belonging and purpose.',
-                icon: '△',
+                icon: (
+                  <svg viewBox="0 0 36 36" width="28" fill="none">
+                    <circle cx="8" cy="10" r="2.8" stroke="#6E8B3D" strokeWidth="1.3" />
+                    <circle cx="28" cy="10" r="2.8" stroke="#B7A24B" strokeWidth="1.3" />
+                    <circle cx="18" cy="27" r="2.8" stroke="#C2CB52" strokeWidth="1.3" />
+                    <path d="M10 12 L16 24 M26 12 L20 24 M11 10 L25 10" stroke="#6E8B3D" strokeWidth="1.1" strokeLinecap="round" />
+                  </svg>
+                ),
               },
               {
                 title: 'Demonstrate flourishing',
                 desc: 'Demonstrate that humanity can flourish without depleting resources, harming ecosystems, or exploiting vulnerable populations.',
-                icon: '□',
+                icon: (
+                  <svg viewBox="0 0 36 36" width="28" fill="none">
+                    <path d="M18 31 L18 15" stroke="#6E8B3D" strokeWidth="1.5" strokeLinecap="round" />
+                    <path d="M18 20 C12 20 9 16 9 11 C15 11 18 15 18 20 Z" stroke="#B7A24B" strokeWidth="1.3" />
+                    <path d="M18 17 C24 17 27 13 27 8 C21 8 18 12 18 17 Z" stroke="#C2CB52" strokeWidth="1.3" />
+                    <path d="M13 31 L23 31" stroke="#6E8B3D" strokeWidth="1.4" strokeLinecap="round" />
+                  </svg>
+                ),
               },
             ].map((item, i) => (
               <div
@@ -131,7 +163,12 @@ export default function GaiaCommons() {
                 className="p-8 rounded-2xl flex flex-col"
                 style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(110,139,61,0.2)' }}
               >
-                <div className="text-2xl mb-5 font-display" style={{ color: '#B7A24B' }}>{item.icon}</div>
+                <div
+                  className="mb-5 w-12 h-12 rounded-xl flex items-center justify-center"
+                  style={{ background: 'rgba(110,139,61,0.14)', border: '1px solid rgba(110,139,61,0.28)' }}
+                >
+                  {item.icon}
+                </div>
                 <h3 className="font-display font-semibold text-xl mb-4" style={{ color: '#F5F1E6' }}>
                   {item.title}
                 </h3>

@@ -234,6 +234,21 @@ p {
   z-index: 1;
 }
 
+/* Icon chip: a soft translucent tile that adapts over both the bone card and
+   the revealed photo, rather than a flat gray box. Lets the image read through
+   on hover. */
+.feature-card-icon {
+  background: rgba(250, 247, 239, 0.42);
+  border: 1px solid rgba(110, 139, 61, 0.30);
+  backdrop-filter: blur(3px);
+  transition: background 0.45s ease, border-color 0.45s ease;
+}
+
+.feature-card:hover .feature-card-icon {
+  background: rgba(250, 247, 239, 0.26);
+  border-color: rgba(245, 241, 230, 0.55);
+}
+
 @media (prefers-reduced-motion: reduce) {
   .feature-card-photo {
     transform: none;

@@ -26,27 +26,17 @@ export default function Resources() {
           <div className="space-y-4">
             <ResourceCard
               title="The Open Earth Manifesto"
-              description="The founding vision — laying the groundwork for a collaborative global ecosystem."
-              format="Web"
-              url="/manifesto"
+              description="The founding vision — laying the groundwork for a collaborative global ecosystem. Download the full document for offline reading and sharing."
+              format="PDF"
+              url="/downloads/Open_Earth_Manifesto_v1.11.pdf"
+              download
             />
             <ResourceCard
               title="Open Earth Culture"
-              description="The Open Philosophy in action — a freely forkable cultural commons asset for any community or organisation."
-              format="Web"
-              url="/culture"
-            />
-            <ResourceCard
-              title="Open Earth Culture (PDF)"
-              description="Download the full Open Earth Culture document for offline reading, sharing, and adaptation."
+              description="The Open Philosophy in action — a freely forkable cultural commons asset. Download the full document for offline reading, sharing, and adaptation."
               format="PDF"
-              url="#"
-            />
-            <ResourceCard
-              title="Open Earth Manifesto (PDF)"
-              description="Download the full Manifesto — the founding vision for a collaborative global ecosystem."
-              format="PDF"
-              url="#"
+              url="/downloads/Open_Earth_Culture_V1.pdf"
+              download
             />
           </div>
         </div>

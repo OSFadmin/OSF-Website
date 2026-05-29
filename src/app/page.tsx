@@ -37,8 +37,7 @@ function PillarCard({ icon, title, description, link, delay, image }: {
         </div>
       )}
       <div className="feature-card-content flex flex-col flex-grow">
-        <div className="mb-6 w-12 h-12 rounded-xl flex items-center justify-center"
-          style={{ background: 'rgba(30,70,52,0.09)', border: '1px solid rgba(110,139,61,0.2)' }}>
+        <div className="feature-card-icon mb-6 w-12 h-12 rounded-xl flex items-center justify-center">
           {icon}
         </div>
         <h3 className="font-display font-bold mb-3"
@@ -188,16 +187,6 @@ export default function Home() {
           </div>
         </div>
 
-        {/* Scroll hint */}
-        <div
-          className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-float-up"
-          style={{ '--dur': '3s', zIndex: 2 } as React.CSSProperties}
-        >
-          <svg viewBox="0 0 24 36" width="16" fill="none" style={{ opacity: 0.4 }}>
-            <rect x="3" y="3" width="18" height="30" rx="9" stroke="rgba(245,241,230,0.5)" strokeWidth="1.5" />
-            <circle cx="12" cy="10" r="2.5" fill="rgba(245,241,230,0.6)" className="animate-float-up" style={{ '--dur': '2s' } as React.CSSProperties} />
-          </svg>
-        </div>
       </section>
 
       {/* ── Stats band ───────────────────────────────── */}
@@ -302,7 +291,7 @@ export default function Home() {
       </section>
 
       {/* ── Infographic strip ────────────────────────── */}
-      <section className="px-6 md:px-10 py-4" style={{ background: 'var(--cream)' }}>
+      <section className="px-6 md:px-10 pt-0 pb-14 md:pb-20 -mt-6 md:-mt-10" style={{ background: 'var(--cream)' }}>
         <div className="max-w-7xl mx-auto flex justify-center">
           <div style={{ borderRadius: '20px', overflow: 'hidden', maxWidth: '81%', width: '100%' }}>
             {/* eslint-disable-next-line @next/next/no-img-element */}

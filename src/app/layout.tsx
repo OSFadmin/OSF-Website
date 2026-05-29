@@ -94,7 +94,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               {/* Social links */}
               <div className="flex gap-3">
                 {[
-                  { label: 'GH', title: 'GitHub', href: 'https://github.com' },
+                  { label: 'GH', title: 'GitHub', href: 'https://github.com/OSFadmin' },
                   { label: 'LI', title: 'LinkedIn', href: '#' },
                   { label: 'X',  title: 'X / Twitter', href: '#' },
                 ].map((s) => (
@@ -141,7 +141,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                 {[
                   { href: "/about",    label: "About" },
                   { href: "/culture",  label: "Culture" },
-                  { href: "/journal",  label: "Journal" },
                 ].map((l) => (
                   <li key={l.href}>
                     <Link href={l.href} className="text-sm font-body transition-all hover:opacity-100 hover:translate-x-0.5 inline-block" style={{ color: "rgba(245,241,230,0.5)" }}>
@@ -159,7 +158,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                 {[
                   { href: "/contact",    label: "Get involved" },
                   { href: "/contact",    label: "Partner with us" },
-                  { href: "https://github.com", label: "GitHub" },
+                  { href: "https://github.com/OSFadmin", label: "GitHub" },
                 ].map((l, i) => (
                   <li key={i}>
                     <Link href={l.href} className="text-sm font-body transition-all hover:opacity-100 hover:translate-x-0.5 inline-block" style={{ color: "rgba(245,241,230,0.5)" }}>

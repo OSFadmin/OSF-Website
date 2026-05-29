@@ -3,6 +3,8 @@ interface ResourceCardProps {
   description: string;
   format: string;
   url: string;
+  /** When true, presents the link as a file download (for same-origin PDFs). */
+  download?: boolean;
 }
 
 const formatColors: Record<string, string> = {
@@ -13,7 +15,7 @@ const formatColors: Record<string, string> = {
   Slides:   'rgba(194,203,82,0.15)',
 };
 
-export default function ResourceCard({ title, description, format, url }: ResourceCardProps) {
+export default function ResourceCard({ title, description, format, url, download }: ResourceCardProps) {
   const badgeBg = formatColors[format] ?? 'rgba(110,139,61,0.12)';
 
   return (
@@ -39,10 +41,11 @@ export default function ResourceCard({ title, description, format, url }: Resour
         href={url}
         target="_blank"
         rel="noopener noreferrer"
+        {...(download ? { download: '' } : {})}
         className="shrink-0 inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-body font-medium transition-all hover:shadow-md hover:scale-[1.02]"
         style={{ background: 'var(--pine)', color: '#F5F1E6' }}
       >
-        View →
+        {download ? 'Download ↓' : 'View →'}
       </a>
     </div>
   );

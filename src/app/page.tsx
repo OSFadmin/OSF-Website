@@ -17,12 +17,13 @@ import HolonBackground from '@/components/HolonBackground';
 //   </svg>
 // );
 
-function PillarCard({ icon, title, description, link, delay }: {
+function PillarCard({ icon, title, description, link, delay, image }: {
   icon: React.ReactNode;
   title: string;
   description: string;
   link: string;
   delay: string;
+  image?: string;
 }) {
   return (
     <Link
@@ -30,22 +31,29 @@ function PillarCard({ icon, title, description, link, delay }: {
       className="feature-card animate-fade-up flex flex-col p-8 no-underline group"
       style={{ animationDelay: delay }}
     >
-      <div className="mb-6 w-12 h-12 rounded-xl flex items-center justify-center"
-        style={{ background: 'rgba(30,70,52,0.09)', border: '1px solid rgba(110,139,61,0.2)' }}>
-        {icon}
+      {image && (
+        <div className="feature-card-photo" aria-hidden="true">
+          <img src={image} alt="" />
+        </div>
+      )}
+      <div className="feature-card-content flex flex-col flex-grow">
+        <div className="mb-6 w-12 h-12 rounded-xl flex items-center justify-center"
+          style={{ background: 'rgba(30,70,52,0.09)', border: '1px solid rgba(110,139,61,0.2)' }}>
+          {icon}
+        </div>
+        <h3 className="font-display font-bold mb-3"
+          style={{ color: 'var(--ink)', fontSize: '1.18rem', lineHeight: 1.3 }}>
+          {title}
+        </h3>
+        <p className="font-body leading-relaxed flex-grow mb-6"
+          style={{ color: 'var(--muted)', fontSize: '0.93rem' }}>
+          {description}
+        </p>
+        <span className="inline-flex items-center gap-1.5 text-sm font-body font-semibold transition-all group-hover:gap-2.5"
+          style={{ color: 'var(--pine)' }}>
+          Explore <span>→</span>
+        </span>
       </div>
-      <h3 className="font-display font-bold mb-3"
-        style={{ color: 'var(--ink)', fontSize: '1.18rem', lineHeight: 1.3 }}>
-        {title}
-      </h3>
-      <p className="font-body leading-relaxed flex-grow mb-6"
-        style={{ color: 'var(--muted)', fontSize: '0.93rem' }}>
-        {description}
-      </p>
-      <span className="inline-flex items-center gap-1.5 text-sm font-body font-semibold transition-all group-hover:gap-2.5"
-        style={{ color: 'var(--pine)' }}>
-        Explore <span>→</span>
-      </span>
     </Link>
   );
 }
@@ -250,6 +258,7 @@ export default function Home() {
               description="Digital and physical infrastructure for global collaboration: communication, peer production, resource sharing, and shared decision-making, woven together worldwide."
               link="/projects"
               delay="0.1s"
+              image="/photos/action-technologies.png"
             />
             <PillarCard
               icon={
@@ -264,6 +273,7 @@ export default function Home() {
               description="Living laboratories that research, develop, and test open innovations and Open Earth principles at every scale."
               link="/culture"
               delay="0.22s"
+              image="/photos/action-innovation.png"
             />
             <PillarCard
               icon={
@@ -277,6 +287,7 @@ export default function Home() {
               description="The foundational architecture of models, frameworks, and value flows that weaves aligned initiatives into a coherent planetary whole."
               link="/gaia-commons"
               delay="0.34s"
+              image="/photos/action-ecosystem.png"
             />
           </div>
         </div>

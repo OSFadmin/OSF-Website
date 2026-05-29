@@ -66,7 +66,7 @@ export default function Projects() {
 
       {/* Featured projects */}
       <section className="py-24 px-6" style={{ background: 'var(--bone)' }}>
-        <div className="max-w-7xl mx-auto">
+        <div className="max-w-[53rem] mx-auto">
           <div className="mb-14">
             <p className="text-xs uppercase tracking-[0.2em] font-body mb-3" style={{ color: 'var(--sage)' }}>
               Featured

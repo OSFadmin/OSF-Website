@@ -464,6 +464,76 @@ export default function Home() {
         </div>
       </section>
 
+      {/* ── Creating the Commons Stack ───────────────── */}
+      <section className="py-24 md:py-32 px-6" style={{ background: '#10231A' }}>
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-14 max-w-2xl mx-auto">
+            <p className="text-xs uppercase tracking-[0.2em] font-body mb-4" style={{ color: 'rgba(194,203,82,0.8)' }}>
+              The Commons Stack
+            </p>
+            <h2 className="font-display font-bold mb-5"
+              style={{ color: '#F5F1E6', fontSize: 'clamp(1.9rem, 3.5vw, 3rem)', lineHeight: 1.1 }}>
+              Creating the Commons Stack
+            </h2>
+            <p className="font-body text-base leading-relaxed" style={{ color: 'rgba(245,241,230,0.7)' }}>
+              Open, opt-in protocols and frameworks for an open society — shared infrastructure layers any
+              community can adopt, fork, and build on, without lock-in or central control.
+            </p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {[
+              {
+                title: 'Open Protocols',
+                desc: 'Interoperable, permissionless standards that let sovereign people, projects, and tools speak the same language.',
+                icon: (
+                  <svg viewBox="0 0 36 36" width="26" fill="none">
+                    <path d="M18 5 L30 11 L18 17 L6 11 Z" stroke="#6E8B3D" strokeWidth="1.4" strokeLinejoin="round" />
+                    <path d="M6 18 L18 24 L30 18" stroke="#B7A24B" strokeWidth="1.3" strokeLinejoin="round" />
+                    <path d="M6 25 L18 31 L30 25" stroke="#C2CB52" strokeWidth="1.2" strokeLinejoin="round" />
+                  </svg>
+                ),
+              },
+              {
+                title: 'Open Frameworks',
+                desc: 'Governance, economic, and coordination patterns — freely forkable, adopted by choice and adapted to fit.',
+                icon: (
+                  <svg viewBox="0 0 36 36" width="26" fill="none">
+                    <rect x="6" y="6" width="24" height="24" rx="3" stroke="#6E8B3D" strokeWidth="1.4" />
+                    <path d="M6 15 H30 M6 23 H30 M15 6 V30 M23 6 V30" stroke="#B7A24B" strokeWidth="1" />
+                  </svg>
+                ),
+              },
+              {
+                title: 'Opt-in by Design',
+                desc: 'No lock-in. Everyone keeps ownership of their identity, data, and direction — participation is always a choice.',
+                icon: (
+                  <svg viewBox="0 0 36 36" width="26" fill="none">
+                    <rect x="6" y="13" width="24" height="11" rx="5.5" stroke="#6E8B3D" strokeWidth="1.4" />
+                    <circle cx="23" cy="18.5" r="3.4" stroke="#C2CB52" strokeWidth="1.4" />
+                    <path d="M10.5 18.5 l2.4 2.4 L17 16" stroke="#B7A24B" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" />
+                  </svg>
+                ),
+              },
+            ].map((layer, i) => (
+              <div key={i} className="glass-card-dark p-8 flex flex-col">
+                <div
+                  className="mb-5 w-12 h-12 rounded-xl flex items-center justify-center"
+                  style={{ background: 'rgba(110,139,61,0.16)', border: '1px solid rgba(110,139,61,0.3)' }}
+                >
+                  {layer.icon}
+                </div>
+                <h3 className="font-display font-semibold text-xl mb-3" style={{ color: '#F5F1E6' }}>
+                  {layer.title}
+                </h3>
+                <p className="font-body text-sm leading-relaxed" style={{ color: 'rgba(245,241,230,0.62)' }}>
+                  {layer.desc}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* ── Manifesto teaser ─────────────────────────── */}
       <section className="py-24 px-6" style={{ background: 'var(--cream)' }}>
         <div className="max-w-4xl mx-auto text-center">

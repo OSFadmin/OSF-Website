@@ -35,12 +35,11 @@ const featured = [
   },
 ];
 
-const initiatives = [
+const initiatives: { tag: string; title: string; desc: string; href?: string }[] = [
   {
-    tag: 'Foundation initiative',
-    title: 'Open Earth Culture',
-    desc: 'A freely forkable cultural commons — the Open Philosophy in action. Five applied, living pillars that any community or organisation can adopt, adapt, and improve.',
-    href: '/culture',
+    tag: 'Commons Innovation Environment · San Francisco',
+    title: 'Project Apollo',
+    desc: "A Commons Innovation Environment in the heart of downtown San Francisco — developed with the Flourishing Systems Foundation, where lab operators and innovators participate as commons contributors. OSF is working with Apollo to implement commons-based systems: OPAL for the innovation commons, PASEO for lab-operator participation, and a localized trust stewarding the facility's collective outputs.",
   },
 ];
 
@@ -210,25 +209,38 @@ export default function Projects() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {initiatives.map((item, i) => (
-              <Link key={i} href={item.href} className="glass-card p-8 block no-underline group">
-                <span
-                  className="text-xs uppercase tracking-widest font-body px-2.5 py-1 rounded-full mb-5 inline-block"
-                  style={{ background: 'rgba(30,70,52,0.1)', color: 'var(--forest)' }}
-                >
-                  {item.tag}
-                </span>
-                <h3 className="font-display font-semibold text-xl mb-3 group-hover:opacity-75 transition-opacity" style={{ color: 'var(--ink)' }}>
-                  {item.title}
-                </h3>
-                <p className="font-body text-sm leading-relaxed mb-4" style={{ color: 'var(--muted)' }}>
-                  {item.desc}
-                </p>
-                <span className="font-body text-sm font-medium" style={{ color: 'var(--pine)' }}>
-                  Learn more →
-                </span>
-              </Link>
-            ))}
+            {initiatives.map((item, i) => {
+              const inner = (
+                <>
+                  <span
+                    className="text-xs uppercase tracking-widest font-body px-2.5 py-1 rounded-full mb-5 inline-block"
+                    style={{ background: 'rgba(30,70,52,0.1)', color: 'var(--forest)' }}
+                  >
+                    {item.tag}
+                  </span>
+                  <h3 className="font-display font-semibold text-xl mb-3 group-hover:opacity-75 transition-opacity" style={{ color: 'var(--ink)' }}>
+                    {item.title}
+                  </h3>
+                  <p className="font-body text-sm leading-relaxed" style={{ color: 'var(--muted)' }}>
+                    {item.desc}
+                  </p>
+                  {item.href && (
+                    <span className="font-body text-sm font-medium mt-4 inline-block" style={{ color: 'var(--pine)' }}>
+                      Learn more →
+                    </span>
+                  )}
+                </>
+              );
+              return item.href ? (
+                <Link key={i} href={item.href} className="glass-card p-8 block no-underline group">
+                  {inner}
+                </Link>
+              ) : (
+                <div key={i} className="glass-card p-8 group">
+                  {inner}
+                </div>
+              );
+            })}
           </div>
         </div>
       </section>

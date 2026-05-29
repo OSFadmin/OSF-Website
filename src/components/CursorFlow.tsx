@@ -79,10 +79,21 @@ export default function CursorFlow() {
       }
     };
 
-    const onDown = (e: MouseEvent) => spawn(e.clientX, e.clientY);
+    let raf = 0;
+    let running = false;
+    const ensureRunning = () => {
+      if (!running) {
+        running = true;
+        raf = requestAnimationFrame(render);
+      }
+    };
+
+    const onDown = (e: MouseEvent) => {
+      spawn(e.clientX, e.clientY);
+      ensureRunning();
+    };
     window.addEventListener('mousedown', onDown, { passive: true });
 
-    let raf = 0;
     const render = () => {
       ctx.clearRect(0, 0, w, h);
       ctx.lineCap = 'round';
@@ -129,9 +140,14 @@ export default function CursorFlow() {
         if (sw.life <= 0) swirls.splice(s, 1);
       }
 
-      raf = requestAnimationFrame(render);
+      if (swirls.length > 0) {
+        raf = requestAnimationFrame(render);
+      } else {
+        // idle: stop the loop and leave a clean canvas (no per-frame cost)
+        running = false;
+        ctx.clearRect(0, 0, w, h);
+      }
     };
-    raf = requestAnimationFrame(render);
 
     return () => {
       cancelAnimationFrame(raf);

@@ -180,7 +180,7 @@ export default function StrategicDrivers() {
         headline="Building toward an Open Earth?"
         text="Every initiative we support advances at least one of these drivers. If your work aligns, we would love to hear from you."
         buttonText="Get in touch"
-        buttonLink="/contact"
+        buttonLink="mailto:contact@opensystems.foundation"
         secondaryButtonText="Explore our projects →"
         secondaryButtonLink="/projects"
       />

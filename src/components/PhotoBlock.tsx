@@ -4,6 +4,9 @@ interface PhotoBlockProps {
   aspectRatio?: string;
   className?: string;
   style?: React.CSSProperties;
+  /** When provided, renders the image instead of the placeholder graphics. */
+  src?: string;
+  alt?: string;
 }
 
 const variantRatios: Record<string, string> = {
@@ -20,8 +23,25 @@ export default function PhotoBlock({
   aspectRatio,
   className = '',
   style,
+  src,
+  alt,
 }: PhotoBlockProps) {
   const ratio = aspectRatio ?? variantRatios[variant];
+
+  if (src) {
+    return (
+      <div
+        className={`relative overflow-hidden ${className}`}
+        style={{ aspectRatio: ratio, ...style }}
+      >
+        <img
+          src={src}
+          alt={alt ?? label}
+          className="w-full h-full object-cover"
+        />
+      </div>
+    );
+  }
 
   return (
     <div

@@ -1,5 +1,6 @@
 import Hero from '@/components/Hero';
 import Link from 'next/link';
+import SubscribeForm from '@/components/SubscribeForm';
 
 export const metadata = { title: 'Journal — Open Systems Foundation' };
 
@@ -9,6 +10,7 @@ const featured = {
   title: 'Introducing the Gaia Protocol: A New Standard for Ecological Verification',
   excerpt: 'Today we are releasing the first public draft of the Gaia Protocol — an open standard designed to make ecological state verifiable, transparent, and computable at any scale.',
   href: '#',
+  image: '/journal/gaia-protocol.png',
 };
 
 const posts = [
@@ -18,6 +20,7 @@ const posts = [
     title: 'Q3 2025 Foundation Transparency Report',
     excerpt: 'A detailed breakdown of our grants, expenditures, and organizational progress over the last quarter.',
     href: '#',
+    image: '/journal/transparency-q3.png',
   },
   {
     date: 'September 28, 2025',
@@ -25,6 +28,7 @@ const posts = [
     title: 'Open Earth Summit 2025: Key Takeaways',
     excerpt: 'Reflections and recordings from our annual gathering of builders, scientists, and stewards from 40 countries.',
     href: '#',
+    image: '/journal/summit-2025.png',
   },
   {
     date: 'September 15, 2025',
@@ -32,6 +36,7 @@ const posts = [
     title: 'Decentralizing Sensor Networks for Forest Monitoring',
     excerpt: 'An exploration of low-cost, open-hardware approaches to tracking biodiversity and canopy health in remote areas.',
     href: '#',
+    image: '/journal/sensor-networks.png',
   },
   {
     date: 'August 30, 2025',
@@ -39,6 +44,7 @@ const posts = [
     title: 'Gaia Commons Data Schema v0.3 Released',
     excerpt: 'What changed, what we learned from the first implementation partners, and where the schema is headed.',
     href: '#',
+    image: '/journal/data-schema.png',
   },
   {
     date: 'August 14, 2025',
@@ -46,6 +52,7 @@ const posts = [
     title: 'Building the Open Earth Community: A Year in Review',
     excerpt: 'From six founding members to a global network spanning 40+ countries — how our community grew and what we learned.',
     href: '#',
+    image: '/journal/community-year.png',
   },
   {
     date: 'July 22, 2025',
@@ -53,6 +60,7 @@ const posts = [
     title: 'Why Open Standards Are Essential for Carbon Markets',
     excerpt: 'The voluntary carbon market is growing fast. Without open, verifiable standards it will remain vulnerable to greenwashing.',
     href: '#',
+    image: '/journal/carbon-standards.png',
   },
 ];
 
@@ -82,16 +90,13 @@ export default function Journal() {
           </p>
           <Link href={featured.href} className="block group">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-              {/* Placeholder image */}
-              <div
-                className="aspect-[16/9] rounded-2xl overflow-hidden flex items-center justify-center"
-                style={{ background: 'linear-gradient(135deg, #1E4634 0%, #2C5E47 50%, #6E8B3D 100%)' }}
-              >
-                <svg viewBox="0 0 300 180" width="80%" className="animate-slow-spin" filter="url(#sketch-wobble)" style={{ opacity: 0.3 }}>
-                  <circle cx="150" cy="90" r="70" stroke="#C2CB52" strokeWidth="1" fill="none" />
-                  <circle cx="150" cy="90" r="45" stroke="#B7A24B" strokeWidth="0.8" fill="none" />
-                  <path d="M150 20 L150 160 M80 90 L220 90" stroke="#F5F1E6" strokeWidth="0.6" />
-                </svg>
+              {/* Featured image */}
+              <div className="aspect-[16/9] rounded-2xl overflow-hidden">
+                <img
+                  src={featured.image}
+                  alt={featured.title}
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                />
               </div>
 
               <div>
@@ -131,11 +136,14 @@ export default function Journal() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {posts.map((post, i) => (
               <Link key={i} href={post.href} className="glass-card p-7 flex flex-col group no-underline">
-                {/* Placeholder */}
-                <div
-                  className="aspect-[16/9] rounded-xl mb-5 overflow-hidden"
-                  style={{ background: `linear-gradient(135deg, ${i % 2 === 0 ? '#1E4634, #6E8B3D' : '#2C5E47, #B7A24B'})` }}
-                />
+                {/* Post image */}
+                <div className="aspect-[16/9] rounded-xl mb-5 overflow-hidden">
+                  <img
+                    src={post.image}
+                    alt={post.title}
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  />
+                </div>
                 <div className="flex items-center gap-3 mb-3">
                   <span
                     className="text-xs uppercase tracking-widest font-body px-2 py-0.5 rounded-full"
@@ -175,25 +183,7 @@ export default function Journal() {
           <p className="font-body text-base font-light leading-relaxed mb-10" style={{ color: 'rgba(245,241,230,0.65)' }}>
             Occasional dispatches on research, protocol updates, events, and what we are building.
           </p>
-          <form className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
-            <input
-              type="email"
-              placeholder="your@email.com"
-              className="flex-grow px-5 py-3 rounded-full text-sm font-body focus:outline-none"
-              style={{
-                background: 'rgba(250,247,239,0.1)',
-                border: '1px solid rgba(245,241,230,0.25)',
-                color: '#F5F1E6',
-              }}
-            />
-            <button
-              type="submit"
-              className="px-7 py-3 rounded-full font-body font-semibold text-sm transition-all hover:scale-[1.02]"
-              style={{ background: '#C2CB52', color: '#1A2A23' }}
-            >
-              Subscribe
-            </button>
-          </form>
+          <SubscribeForm variant="panel" source="journal" />
           <p className="text-xs font-body mt-5" style={{ color: 'rgba(245,241,230,0.35)' }}>
             We respect your privacy. No spam, ever.
           </p>

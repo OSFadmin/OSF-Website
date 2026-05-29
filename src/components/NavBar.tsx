@@ -10,7 +10,6 @@ const navLinks = [
   { href: '/manifesto',    label: 'Manifesto' },
   { href: '/projects',     label: 'Projects' },
   { href: '/gaia-commons', label: 'Gaia Commons' },
-  { href: '/team',         label: 'Team' },
   { href: '/journal',      label: 'Journal' },
 ];
 

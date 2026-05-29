@@ -71,6 +71,7 @@ export default function Culture() {
           </div>
           <div>
             <PhotoBlock
+              src="/photos/culture-communities.png"
               label="Open Earth Culture · Communities in practice"
               variant="landscape"
               style={{ borderRadius: '18px' }}
@@ -137,6 +138,7 @@ export default function Culture() {
       <section className="px-6 md:px-10 py-4" style={{ background: 'var(--cream)' }}>
         <div className="max-w-7xl mx-auto">
           <PhotoBlock
+            src="/photos/culture-pillars.png"
             label="Open Earth Culture · Living the pillars in community"
             variant="panoramic"
             style={{ borderRadius: '18px' }}

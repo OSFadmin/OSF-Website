@@ -21,13 +21,27 @@
 
 html {
   scroll-behavior: smooth;
-  font-size: 17px;
+  /* Fluid base: scales smoothly from ~15px on small phones up to 17px on
+     larger viewports, so every rem-based size scales down gracefully. */
+  font-size: clamp(15px, 13.4px + 0.45vw, 17px);
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
   line-height: 1.65;
+}
+
+/* ── Line-wrap quality ────────────────────────────── */
+/* Balance headings and avoid single-word "orphan" last lines in paragraphs,
+   especially as the layout narrows on mobile. Progressive — ignored where
+   unsupported. */
+h1, h2, h3, h4 {
+  text-wrap: balance;
+}
+
+p {
+  text-wrap: pretty;
 }
 
 /* ── Animations ───────────────────────────────────── */
@@ -174,6 +188,75 @@ body {
   border-radius: 18px;
   transition: border-color 0.22s ease, box-shadow 0.22s ease, transform 0.22s ease;
   position: relative;
+  overflow: hidden;
+}
+
+/* ── Feature card hover-reveal photo ──────────────── */
+/* Photorealistic image sits behind the text, hidden by default and gently
+   "lighting up" on hover at high transparency so the copy stays fully legible. */
+.feature-card-photo {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  opacity: 0;
+  transform: scale(1.06);
+  transition: opacity 0.5s ease, transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+  pointer-events: none;
+}
+
+.feature-card-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Cream scrim keeps dark text readable over the photo's bright areas. */
+.feature-card-photo::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(250, 247, 239, 0.62) 0%,
+    rgba(250, 247, 239, 0.40) 40%,
+    rgba(250, 247, 239, 0.58) 100%
+  );
+}
+
+.feature-card:hover .feature-card-photo {
+  opacity: 0.55;
+  transform: scale(1);
+}
+
+/* Keep all card content above the revealed photo. */
+.feature-card-content {
+  position: relative;
+  z-index: 1;
+}
+
+/* Icon chip: a soft translucent tile that adapts over both the bone card and
+   the revealed photo, rather than a flat gray box. Lets the image read through
+   on hover. */
+.feature-card-icon {
+  background: rgba(250, 247, 239, 0.42);
+  border: 1px solid rgba(110, 139, 61, 0.30);
+  backdrop-filter: blur(3px);
+  transition: background 0.45s ease, border-color 0.45s ease;
+}
+
+.feature-card:hover .feature-card-icon {
+  background: rgba(250, 247, 239, 0.26);
+  border-color: rgba(245, 241, 230, 0.55);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .feature-card-photo {
+    transform: none;
+    transition: opacity 0.3s ease;
+  }
+  .feature-card:hover .feature-card-photo {
+    transform: none;
+  }
 }
 
 .feature-card::before {

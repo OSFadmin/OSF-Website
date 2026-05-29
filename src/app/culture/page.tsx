@@ -115,8 +115,8 @@ export default function Culture() {
               </div>
             ))}
 
-            {/* CreActivity — spans two columns */}
-            <div className="glass-card p-8 md:col-span-2">
+            {/* CreActivity */}
+            <div className="glass-card p-8">
               <div
                 className="w-10 h-10 rounded-xl flex items-center justify-center mb-6"
                 style={{ background: 'rgba(183,162,75,0.1)', border: '1px solid rgba(183,162,75,0.22)' }}

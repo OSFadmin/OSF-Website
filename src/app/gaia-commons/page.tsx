@@ -127,9 +127,9 @@ export default function GaiaCommons() {
                 desc: 'Bring ecological wellbeing, cultural diversity, and social fairness together into a tapestry of regenerative cultures.',
                 icon: (
                   <svg viewBox="0 0 36 36" width="28" fill="none">
-                    <path d="M6 14 C6 9 12 9 18 14 C24 19 30 19 30 14" stroke="#6E8B3D" strokeWidth="1.4" strokeLinecap="round" />
-                    <path d="M6 22 C6 27 12 27 18 22 C24 17 30 17 30 22" stroke="#B7A24B" strokeWidth="1.4" strokeLinecap="round" />
-                    <path d="M18 9 C21 12 21 15 18 18 C15 15 15 12 18 9 Z" stroke="#C2CB52" strokeWidth="1.1" />
+                    <circle cx="14" cy="14" r="7.5" stroke="#6E8B3D" strokeWidth="1.5" />
+                    <circle cx="22" cy="14" r="7.5" stroke="#B7A24B" strokeWidth="1.5" />
+                    <circle cx="18" cy="22" r="7.5" stroke="#C2CB52" strokeWidth="1.5" />
                   </svg>
                 ),
               },

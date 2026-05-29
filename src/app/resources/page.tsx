@@ -58,13 +58,14 @@ export default function Resources() {
               title="Gaia Commons — Overview"
               description="Introduction to the flagship initiative and its purpose as a living network for regenerative planetary stewardship."
               format="Web"
-              url="/gaia-commons"
+              url="https://gaiacommons.net/#/en/ecosystem"
             />
             <ResourceCard
               title="GaiaOps — Public Overview"
               description="How the operational platform makes the commons buildout effective — coordination infrastructure built for the regenerative movement."
               format="PDF"
-              url="#"
+              url="/downloads/GaiaOps_Public_Overview.pdf"
+              download
             />
           </div>
         </div>
@@ -89,10 +90,10 @@ export default function Resources() {
               url="#"
             />
             <ResourceCard
-              title="Governance Framework"
-              description="How decisions are made, who makes them, and how community members can participate in OSF governance."
+              title="Strategic Drivers"
+              description="The five strategic drivers — and 25 sub-drivers — that guide how the Foundation catalyzes change toward an Open Earth."
               format="Web"
-              url="#"
+              url="/strategic-drivers"
             />
           </div>
         </div>

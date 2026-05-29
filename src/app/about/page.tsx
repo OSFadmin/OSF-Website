@@ -193,6 +193,31 @@ export default function About() {
         </div>
       </section>
 
+      {/* Strategic Drivers teaser */}
+      <section className="py-24 px-6" style={{ background: 'var(--bone)' }}>
+        <div className="max-w-4xl mx-auto text-center">
+          <p className="text-xs uppercase tracking-[0.2em] font-body mb-4" style={{ color: 'var(--sage)' }}>
+            How we work
+          </p>
+          <h2 className="font-display font-bold mb-5" style={{ color: 'var(--ink)', fontSize: 'clamp(1.7rem, 3vw, 2.5rem)' }}>
+            Five strategic drivers
+          </h2>
+          <p className="font-body text-base leading-relaxed mb-4 max-w-2xl mx-auto" style={{ color: 'var(--muted)' }}>
+            Our work is guided by five strategic drivers — our core mechanisms for catalyzing change. They follow a natural progression: learn → create → connect → resource → scale, with twenty-five sub-drivers that bring the strategy into action.
+          </p>
+          <p className="font-body text-sm leading-relaxed mb-9 max-w-xl mx-auto" style={{ color: 'var(--muted)', opacity: 0.8 }}>
+            Knowledge Integration · Creative Acceleration · Network Cultivation · Commons Restoration · Ecosystem Evolution
+          </p>
+          <a
+            href="/strategic-drivers"
+            className="inline-flex items-center px-8 py-3 rounded-full font-body font-medium text-sm transition-all hover:shadow-md"
+            style={{ background: 'var(--pine)', color: '#F5F1E6' }}
+          >
+            Read the Strategic Drivers →
+          </a>
+        </div>
+      </section>
+
       <CtaBand
         headline="Ready to be part of this?"
         text="The Foundation invites aligned partners, benefactors, and builders to join the work of an Open Earth."

@@ -222,14 +222,23 @@ p {
 }
 
 .feature-card:hover .feature-card-photo {
-  opacity: 0.55;
+  opacity: 0.7;
   transform: scale(1);
 }
 
-/* Keep all card content above the revealed photo. */
+/* Keep all card content above the revealed photo, and give the text a soft
+   translucent plate on hover so it stays readable while the image still shows
+   through and around it. */
 .feature-card-content {
   position: relative;
   z-index: 1;
+  border-radius: 14px;
+  transition: background 0.45s ease, box-shadow 0.45s ease;
+}
+
+.feature-card:hover .feature-card-content {
+  background: rgba(250, 247, 239, 0.74);
+  box-shadow: 0 0 0 14px rgba(250, 247, 239, 0.74);
 }
 
 /* Icon chip: a soft translucent tile that adapts over both the bone card and

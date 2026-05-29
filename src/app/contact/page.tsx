@@ -1,5 +1,6 @@
 'use client';
 
+import { useState } from 'react';
 import Hero from '@/components/Hero';
 
 const paths = [
@@ -33,7 +34,48 @@ const inputStyle = {
   transition: 'border-color 0.2s ease',
 };
 
+type FormStatus = 'idle' | 'loading' | 'success' | 'error';
+
 export default function Contact() {
+  const [form, setForm] = useState({ name: '', email: '', organisation: '', reason: 'General', message: '' });
+  const [status, setStatus] = useState<FormStatus>('idle');
+  const [feedback, setFeedback] = useState('');
+
+  const update = (field: keyof typeof form) => (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>,
+  ) => setForm((f) => ({ ...f, [field]: e.target.value }));
+
+  async function handleSubmit(e: React.FormEvent) {
+    e.preventDefault();
+    if (status === 'loading') return;
+    if (!form.name.trim() || !form.message.trim() || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email)) {
+      setStatus('error');
+      setFeedback('Please provide your name, a valid email, and a message.');
+      return;
+    }
+    setStatus('loading');
+    setFeedback('');
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(form),
+      });
+      const data = await res.json().catch(() => ({}));
+      if (res.ok) {
+        setStatus('success');
+        setFeedback(data.message ?? 'Thank you — your message has been sent.');
+        setForm({ name: '', email: '', organisation: '', reason: 'General', message: '' });
+      } else {
+        setStatus('error');
+        setFeedback(data.error ?? 'Something went wrong. Please try again.');
+      }
+    } catch {
+      setStatus('error');
+      setFeedback('Network error. Please email contact@opensystems.foundation directly.');
+    }
+  }
+
   return (
     <div>
       <Hero
@@ -82,7 +124,7 @@ export default function Contact() {
             <h2 className="font-display font-bold mb-8" style={{ color: 'var(--ink)', fontSize: 'clamp(1.4rem, 2vw, 1.8rem)' }}>
               We read every message
             </h2>
-            <form className="space-y-5">
+            <form className="space-y-5" onSubmit={handleSubmit}>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                 <div>
                   <label className="block text-xs uppercase tracking-widest font-body mb-2" style={{ color: 'var(--muted)' }}>
@@ -90,6 +132,9 @@ export default function Contact() {
                   </label>
                   <input
                     type="text"
+                    required
+                    value={form.name}
+                    onChange={update('name')}
                     style={inputStyle}
                     onFocus={(e) => e.currentTarget.style.borderColor = 'var(--pine)'}
                     onBlur={(e) => e.currentTarget.style.borderColor = 'var(--border)'}
@@ -101,6 +146,9 @@ export default function Contact() {
                   </label>
                   <input
                     type="email"
+                    required
+                    value={form.email}
+                    onChange={update('email')}
                     style={inputStyle}
                     onFocus={(e) => e.currentTarget.style.borderColor = 'var(--pine)'}
                     onBlur={(e) => e.currentTarget.style.borderColor = 'var(--border)'}
@@ -114,6 +162,8 @@ export default function Contact() {
                 </label>
                 <input
                   type="text"
+                  value={form.organisation}
+                  onChange={update('organisation')}
                   style={inputStyle}
                   onFocus={(e) => e.currentTarget.style.borderColor = 'var(--pine)'}
                   onBlur={(e) => e.currentTarget.style.borderColor = 'var(--border)'}
@@ -124,6 +174,8 @@ export default function Contact() {
                   Reason for contact
                 </label>
                 <select
+                  value={form.reason}
+                  onChange={update('reason')}
                   style={{ ...inputStyle, cursor: 'pointer' }}
                   onFocus={(e) => e.currentTarget.style.borderColor = 'var(--pine)'}
                   onBlur={(e) => e.currentTarget.style.borderColor = 'var(--border)'}
@@ -140,6 +192,9 @@ export default function Contact() {
                 </label>
                 <textarea
                   rows={5}
+                  required
+                  value={form.message}
+                  onChange={update('message')}
                   style={{ ...inputStyle, resize: 'none' }}
                   onFocus={(e) => e.currentTarget.style.borderColor = 'var(--pine)'}
                   onBlur={(e) => e.currentTarget.style.borderColor = 'var(--border)'}
@@ -147,11 +202,21 @@ export default function Contact() {
               </div>
               <button
                 type="submit"
-                className="inline-flex items-center px-9 py-3.5 rounded-full font-body font-semibold text-sm tracking-wide transition-all hover:shadow-lg hover:scale-[1.02]"
+                disabled={status === 'loading' || status === 'success'}
+                className="inline-flex items-center px-9 py-3.5 rounded-full font-body font-semibold text-sm tracking-wide transition-all hover:shadow-lg hover:scale-[1.02] disabled:opacity-60"
                 style={{ background: 'var(--pine)', color: '#F5F1E6' }}
               >
-                Send message →
+                {status === 'loading' ? 'Sending…' : status === 'success' ? 'Sent ✓' : 'Send message →'}
               </button>
+              {feedback && (
+                <p
+                  role="status"
+                  className="font-body text-sm"
+                  style={{ color: status === 'error' ? '#B4542F' : 'var(--forest)' }}
+                >
+                  {feedback}
+                </p>
+              )}
             </form>
           </div>
         </div>

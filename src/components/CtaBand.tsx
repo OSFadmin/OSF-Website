@@ -1,5 +1,7 @@
 import Link from 'next/link';
 
+const isExternal = (href: string) => /^(mailto:|tel:|https?:)/.test(href);
+
 interface CtaBandProps {
   headline: string;
   text?: string;
@@ -52,13 +54,23 @@ export default function CtaBand({
           </p>
         )}
         <div className="flex flex-wrap items-center justify-center gap-4">
-          <Link
-            href={buttonLink}
-            className="inline-flex items-center px-9 py-3.5 rounded-full font-body font-semibold text-sm tracking-wide transition-all hover:shadow-lg hover:scale-[1.02]"
-            style={{ background: '#C2CB52', color: '#1A2A23' }}
-          >
-            {buttonText}
-          </Link>
+          {isExternal(buttonLink) ? (
+            <a
+              href={buttonLink}
+              className="inline-flex items-center px-9 py-3.5 rounded-full font-body font-semibold text-sm tracking-wide transition-all hover:shadow-lg hover:scale-[1.02]"
+              style={{ background: '#C2CB52', color: '#1A2A23' }}
+            >
+              {buttonText}
+            </a>
+          ) : (
+            <Link
+              href={buttonLink}
+              className="inline-flex items-center px-9 py-3.5 rounded-full font-body font-semibold text-sm tracking-wide transition-all hover:shadow-lg hover:scale-[1.02]"
+              style={{ background: '#C2CB52', color: '#1A2A23' }}
+            >
+              {buttonText}
+            </Link>
+          )}
           {secondaryButtonText && secondaryButtonLink && (
             <Link
               href={secondaryButtonLink}

@@ -17,18 +17,16 @@ import HolonBackground from '@/components/HolonBackground';
 //   </svg>
 // );
 
-function PillarCard({ icon, title, description, link, delay, image }: {
+function PillarCard({ icon, title, description, delay, image }: {
   icon: React.ReactNode;
   title: string;
   description: string;
-  link: string;
   delay: string;
   image?: string;
 }) {
   return (
-    <Link
-      href={link}
-      className="feature-card animate-fade-up flex flex-col p-8 no-underline group"
+    <div
+      className="feature-card animate-fade-up flex flex-col p-8"
       style={{ animationDelay: delay }}
     >
       {image && (
@@ -44,16 +42,12 @@ function PillarCard({ icon, title, description, link, delay, image }: {
           style={{ color: 'var(--ink)', fontSize: '1.18rem', lineHeight: 1.3 }}>
           {title}
         </h3>
-        <p className="font-body leading-relaxed flex-grow mb-6"
+        <p className="font-body leading-relaxed flex-grow"
           style={{ color: 'var(--muted)', fontSize: '0.93rem' }}>
           {description}
         </p>
-        <span className="inline-flex items-center gap-1.5 text-sm font-body font-semibold transition-all group-hover:gap-2.5"
-          style={{ color: 'var(--pine)' }}>
-          Explore <span>→</span>
-        </span>
       </div>
-    </Link>
+    </div>
   );
 }
 
@@ -245,7 +239,6 @@ export default function Home() {
               }
               title="Open Earth Technologies"
               description="Digital and physical infrastructure for global collaboration: communication, peer production, resource sharing, and shared decision-making, woven together worldwide."
-              link="/projects"
               delay="0.1s"
               image="/photos/action-technologies.png"
             />
@@ -260,7 +253,6 @@ export default function Home() {
               }
               title="Open Earth Innovation Environments"
               description="Living laboratories that research, develop, and test open innovations and Open Earth principles at every scale."
-              link="/culture"
               delay="0.22s"
               image="/photos/action-innovation.png"
             />
@@ -274,7 +266,6 @@ export default function Home() {
               }
               title="Open Earth Ecosystem"
               description="The foundational architecture of models, frameworks, and value flows that weaves aligned initiatives into a coherent planetary whole."
-              link="/gaia-commons"
               delay="0.34s"
               image="/photos/action-ecosystem.png"
             />

@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 /**
  * Click delight: on each click, a few elegant swirling tendrils spiral off
@@ -12,6 +12,10 @@ import { useEffect, useRef } from 'react';
  */
 export default function CursorFlow() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
+  // Only show the overlay once activated on a capable device. Keeping it
+  // hidden by default avoids a stray, unsized canvas (which can flash as a
+  // black box on mobile when the page is restored from bfcache).
+  const [active, setActive] = useState(false);
 
   useEffect(() => {
     if (typeof window === 'undefined') return;
@@ -24,6 +28,8 @@ export default function CursorFlow() {
     if (!canvas) return;
     const ctx = canvas.getContext('2d');
     if (!ctx) return;
+
+    setActive(true);
 
     const dpr = Math.min(window.devicePixelRatio || 1, 2);
     let w = 0;
@@ -163,8 +169,12 @@ export default function CursorFlow() {
       style={{
         position: 'fixed',
         inset: 0,
+        width: '100%',
+        height: '100%',
         zIndex: 9998,
         pointerEvents: 'none',
+        display: active ? 'block' : 'none',
+        background: 'transparent',
       }}
     />
   );

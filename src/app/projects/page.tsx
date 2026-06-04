@@ -8,7 +8,7 @@ const featured = [
   {
     tag: 'Flagship · Stewarded',
     title: 'Gaia Commons',
-    image: null,
+    image: '/projects/Gaia_Commons_Article.png',
     desc: 'A living network uniting individuals and organisations to co-create and promote regenerative solutions — stewarding our planet as a living system. Gaia Commons is our flagship: the most developed expression of the Open Earth vision.',
     details: [
       'Global ecosystem for regenerative cultures and planetary wellbeing',
@@ -22,7 +22,7 @@ const featured = [
   {
     tag: 'Within Gaia Commons',
     title: 'GaiaOps',
-    image: '/projects/gaiaops.png',
+    image: '/projects/GaiaOPS_Article_Cover.png',
     desc: 'GaiaOps is the operational platform within Gaia Commons — the substrate that lets teams, working groups, organisations, and communities coordinate as one living system. The regenerative movement has more aligned people, and good ideas than ever — what it lacks is coordination infrastructure built for it.',
     details: [
       'Coordination infrastructure built for the regenerative movement',
@@ -30,7 +30,7 @@ const featured = [
       'Durable output from every conversation and session',
       'Scales as the commons and the movement grow',
     ],
-    href: '/resources',
+    href: '/projects/gaiaops',
     status: 'Active',
   },
 ];
@@ -39,7 +39,8 @@ const initiatives: { tag: string; title: string; desc: string; href?: string }[]
   {
     tag: 'Commons Innovation Environment · San Francisco',
     title: 'Project Apollo',
-    desc: "A Commons Innovation Environment in the heart of downtown San Francisco — developed with the Flourishing Systems Foundation, where lab operators and innovators participate as commons contributors. OSF is working with Apollo to implement commons-based systems: OPAL for the innovation commons, PASEO for lab-operator participation, and a localized trust stewarding the facility's collective outputs.",
+    desc: "A Commons Innovation Environment in the heart of downtown San Francisco — developed with the Flourishing Systems Foundation, where lab operators and innovators participate as commons contributors. OSF is working with Apollo to implement commons-based systems: OPAL for the innovation commons, PASEO for lab-operator participation, and a localised trust stewarding the facility's collective outputs.",
+    href: '/projects/project-apollo',
   },
 ];
 
@@ -59,7 +60,7 @@ export default function Projects() {
 
       {/* Featured projects */}
       <section className="py-24 px-6" style={{ background: 'var(--bone)' }}>
-        <div className="max-w-[53rem] mx-auto">
+        <div className="max-w-7xl mx-auto">
           <div className="mb-14">
             <p className="text-xs uppercase tracking-[0.2em] font-body mb-3" style={{ color: 'var(--sage)' }}>
               Featured
@@ -69,62 +70,41 @@ export default function Projects() {
             </h2>
           </div>
 
-          <div className="space-y-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {featured.map((proj, i) => (
-              <div key={i} className="glass-card overflow-hidden">
-                {proj.image && (
-                  // eslint-disable-next-line @next/next/no-img-element
-                  <img
-                    src={proj.image}
-                    alt={proj.title}
-                    style={{ width: '100%', height: '260px', objectFit: 'cover', display: 'block' }}
-                  />
-                )}
-                <div className="p-10 grid grid-cols-1 md:grid-cols-2 gap-10">
-                  <div>
-                    <div className="flex items-center gap-3 mb-5">
-                      <span
-                        className="text-xs uppercase tracking-widest font-body px-2.5 py-1 rounded-full"
-                        style={{ background: 'rgba(30,70,52,0.1)', color: 'var(--forest)' }}
-                      >
-                        {proj.tag}
-                      </span>
-                      <span
-                        className="text-xs uppercase tracking-widest font-body px-2.5 py-1 rounded-full"
-                        style={{ background: statusColors[proj.status], color: 'var(--forest)' }}
-                      >
-                        {proj.status}
-                      </span>
-                    </div>
-                    <h3 className="font-display font-bold text-2xl mb-4" style={{ color: 'var(--ink)' }}>
-                      {proj.title}
-                    </h3>
-                    <p className="font-body text-sm leading-relaxed mb-6" style={{ color: 'var(--muted)' }}>
-                      {proj.desc}
-                    </p>
-                    <Link
-                      href={proj.href}
-                      className="inline-flex items-center px-7 py-3 rounded-full font-body font-medium text-sm transition-all hover:shadow-md"
-                      style={{ background: 'var(--pine)', color: '#F5F1E6' }}
+              <Link key={i} href={proj.href} className="glass-card overflow-hidden flex flex-col no-underline group">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src={proj.image}
+                  alt={proj.title}
+                  style={{ width: '100%', height: '240px', objectFit: 'cover', display: 'block' }}
+                />
+                <div className="p-7 flex flex-col flex-1">
+                  <div className="flex items-center gap-2 mb-4">
+                    <span
+                      className="text-xs uppercase tracking-widest font-body px-2.5 py-1 rounded-full"
+                      style={{ background: 'rgba(30,70,52,0.1)', color: 'var(--forest)' }}
                     >
-                      Learn more →
-                    </Link>
+                      {proj.tag}
+                    </span>
+                    <span
+                      className="text-xs uppercase tracking-widest font-body px-2.5 py-1 rounded-full"
+                      style={{ background: statusColors[proj.status], color: 'var(--forest)' }}
+                    >
+                      {proj.status}
+                    </span>
                   </div>
-                  <div>
-                    <p className="text-xs uppercase tracking-[0.15em] font-body mb-5" style={{ color: 'var(--sage)' }}>
-                      Key points
-                    </p>
-                    <ul className="space-y-3">
-                      {proj.details.map((d, j) => (
-                        <li key={j} className="flex gap-3">
-                          <span className="shrink-0 mt-1 text-xs" style={{ color: 'var(--gold)' }}>◆</span>
-                          <span className="font-body text-sm leading-relaxed" style={{ color: 'var(--muted)' }}>{d}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
+                  <h3 className="font-display font-bold text-xl mb-3 group-hover:opacity-75 transition-opacity" style={{ color: 'var(--ink)' }}>
+                    {proj.title}
+                  </h3>
+                  <p className="font-body text-sm leading-relaxed flex-1" style={{ color: 'var(--muted)' }}>
+                    {proj.desc}
+                  </p>
+                  <span className="font-body text-sm font-medium mt-5 inline-block" style={{ color: 'var(--pine)' }}>
+                    Learn more →
+                  </span>
                 </div>
-              </div>
+              </Link>
             ))}
           </div>
         </div>
@@ -146,16 +126,18 @@ export default function Projects() {
               {
                 tag: 'Within Gaia Commons',
                 title: 'GaiaOS',
-                image: '/projects/gaiaos.png',
+                image: '/projects/GaiaOS_Article_Cover.png',
                 status: 'Active',
                 desc: 'The operating system layer of Gaia Commons — shared infrastructure, protocols, and interfaces that underpin the entire commons network.',
+                href: '/projects/gaiaos',
               },
               {
                 tag: 'Open Infrastructure',
-                title: 'Open Peer Access License (OPAL)',
+                title: 'Open Peer Access Licence (OPAL)',
                 image: '/projects/opal.png',
                 status: 'Active',
                 desc: 'A novel licensing framework enabling commons-based peer production while protecting open contributions from proprietary capture.',
+                href: '/projects/opal',
               },
               {
                 tag: 'Open Infrastructure',
@@ -163,9 +145,10 @@ export default function Projects() {
                 image: '/projects/paseo.png',
                 status: 'Active',
                 desc: 'Participatory Architecture for Shared Economic Organisations — governance and economic tooling for distributed, self-organising communities.',
+                href: '/projects/paseos',
               },
             ].map((proj, i) => (
-              <div key={i} className="glass-card overflow-hidden flex flex-col">
+              <Link key={i} href={proj.href} className="glass-card overflow-hidden flex flex-col no-underline group">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                   src={proj.image}
@@ -183,14 +166,17 @@ export default function Projects() {
                       {proj.status}
                     </span>
                   </div>
-                  <h3 className="font-display font-semibold text-lg mb-3" style={{ color: 'var(--ink)' }}>
+                  <h3 className="font-display font-semibold text-lg mb-3 group-hover:opacity-75 transition-opacity" style={{ color: 'var(--ink)' }}>
                     {proj.title}
                   </h3>
                   <p className="font-body text-sm leading-relaxed flex-1" style={{ color: 'var(--muted)' }}>
                     {proj.desc}
                   </p>
+                  <span className="font-body text-sm font-medium mt-5 inline-block" style={{ color: 'var(--pine)' }}>
+                    Learn more →
+                  </span>
                 </div>
-              </div>
+              </Link>
             ))}
           </div>
         </div>

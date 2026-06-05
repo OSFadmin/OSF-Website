@@ -54,9 +54,9 @@ function PillarCard({ icon, title, description, delay, image }: {
 
 const stats: Array<{ value: string; label: string; sub: string; sub2?: string }> = [
   {
-    value: '4',
+    value: '7',
     label: 'Projects',
-    sub: '2 Underway · 2 Scheduled · 0 Complete',
+    sub: '5 Underway · 1 Paused · 1 Complete',
   },
   {
     value: '20+',

@@ -551,34 +551,64 @@ export default function Home() {
       </section>
 
       {/* ── Manifesto teaser ─────────────────────────── */}
-      <section className="py-24 px-6" style={{ background: 'var(--cream)' }}>
-        <div className="max-w-4xl mx-auto text-center">
-          <span className="pill-badge mb-5">Our foundational document</span>
-          <h2 className="font-display font-bold mb-4 mt-5"
-            style={{ color: 'var(--ink)', fontSize: 'clamp(1.8rem, 3.5vw, 2.8rem)' }}>
-            The Open Earth Manifesto
-          </h2>
-          <p className="font-display font-semibold mb-6 max-w-2xl mx-auto"
-            style={{ color: 'var(--forest)', fontSize: 'clamp(1.05rem, 2vw, 1.4rem)', lineHeight: 1.35 }}>
-            Laying the Groundwork for a Collaborative Global Ecosystem
-          </p>
-          <p className="font-body text-base font-light leading-relaxed mb-4 max-w-2xl mx-auto" style={{ color: 'var(--muted)' }}>
-            The vision document that describes the shift from scarcity-driven competition to an abundance-based, openly shared planet.
-          </p>
-          <p className="font-body text-sm leading-relaxed mb-10 max-w-xl mx-auto" style={{ color: 'var(--muted)', opacity: 0.75 }}>
-            Freely available for anyone to read, share, build on, and adapt.
-          </p>
-          <div className="flex flex-wrap justify-center gap-4">
-            <Link href="/manifesto"
-              className="inline-flex items-center px-8 py-3 rounded-full font-body font-medium text-sm transition-all hover:shadow-md"
-              style={{ background: 'var(--pine)', color: '#F5F1E6' }}>
-              Read the Manifesto →
-            </Link>
-            <a href="/downloads/Open_Earth_Manifesto_v1.11.pdf" download
-              className="inline-flex items-center px-8 py-3 rounded-full font-body font-medium text-sm transition-all hover:opacity-70"
-              style={{ border: '1px solid var(--border)', color: 'var(--pine)' }}>
-              Download the PDF →
-            </a>
+      <section className="py-24 md:py-32 px-6" style={{ background: '#182B1E' }}>
+        <div className="max-w-7xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-14 md:gap-20 items-center">
+
+            {/* Cover image */}
+            <div className="flex items-center justify-center">
+              <div style={{
+                borderRadius: '12px',
+                overflow: 'hidden',
+                boxShadow: '0 32px 80px rgba(0,0,0,0.55), 0 8px 24px rgba(0,0,0,0.35)',
+                maxWidth: '360px',
+                width: '100%',
+              }}>
+                <Image
+                  src="/The_Open_Earth_Manifesto_Cover.png"
+                  alt="The Open Earth Manifesto"
+                  width={720}
+                  height={1020}
+                  loading="lazy"
+                  sizes="(max-width: 768px) 80vw, 360px"
+                  style={{ width: '100%', height: 'auto', display: 'block' }}
+                />
+              </div>
+            </div>
+
+            {/* Text */}
+            <div>
+              <p className="text-xs uppercase tracking-[0.22em] font-body mb-5" style={{ color: 'rgba(194,203,82,0.75)' }}>
+                Our foundational document
+              </p>
+              <h2 className="font-display font-bold leading-tight mb-4"
+                style={{ color: '#F5F1E6', fontSize: 'clamp(1.9rem, 3.5vw, 3rem)' }}>
+                The Open Earth Manifesto
+              </h2>
+              <p className="font-display font-semibold mb-6"
+                style={{ color: 'rgba(194,203,82,0.8)', fontSize: 'clamp(1rem, 1.8vw, 1.25rem)', lineHeight: 1.4 }}>
+                Laying the Groundwork for a Collaborative Global Ecosystem
+              </p>
+              <p className="font-body text-base leading-relaxed mb-4" style={{ color: 'rgba(245,241,230,0.68)' }}>
+                The vision document that describes the shift from scarcity-driven competition to an abundance-based, openly shared planet.
+              </p>
+              <p className="font-body text-sm leading-relaxed mb-10" style={{ color: 'rgba(245,241,230,0.42)' }}>
+                Freely available for anyone to read, share, build on, and adapt.
+              </p>
+              <div className="flex flex-wrap gap-4">
+                <Link href="/manifesto"
+                  className="inline-flex items-center px-8 py-3 rounded-full font-body font-semibold text-sm transition-all hover:shadow-lg hover:scale-[1.02]"
+                  style={{ background: '#C2CB52', color: '#1A2A23' }}>
+                  Read the Manifesto →
+                </Link>
+                <a href="/downloads/Open_Earth_Manifesto_v1.11.pdf" download
+                  className="inline-flex items-center px-8 py-3 rounded-full font-body font-medium text-sm transition-all hover:opacity-70"
+                  style={{ border: '1px solid rgba(245,241,230,0.2)', color: 'rgba(245,241,230,0.7)' }}>
+                  Download the PDF →
+                </a>
+              </div>
+            </div>
+
           </div>
         </div>
       </section>

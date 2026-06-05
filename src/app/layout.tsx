@@ -6,7 +6,8 @@ import Image from "next/image";
 import SketchFilter from "@/components/SketchFilter";
 import InteriorBackground from "@/components/InteriorBackground";
 import NavBar from "@/components/NavBar";
-import SubscribeForm from "@/components/SubscribeForm";
+import SubscribeModal from "@/components/SubscribeModal";
+
 
 const playfair = Playfair_Display({
   subsets: ["latin"],
@@ -46,18 +47,28 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             className="border-b"
             style={{ borderColor: "rgba(245,241,230,0.07)", background: "rgba(30,70,52,0.45)" }}
           >
-            <div className="max-w-7xl mx-auto px-6 md:px-10 py-12 flex flex-col md:flex-row items-start md:items-center justify-between gap-8">
-              <div>
-                <p className="font-body font-semibold text-base mb-1" style={{ color: "#F5F1E6" }}>
+            {/* Decorative top accent line */}
+            <div style={{ height: '1px', background: 'linear-gradient(90deg, transparent 0%, rgba(194,203,82,0.22) 30%, rgba(194,203,82,0.35) 50%, rgba(194,203,82,0.22) 70%, transparent 100%)' }} />
+
+            <div className="max-w-xl mx-auto px-6 py-14 flex flex-col items-center text-center gap-5">
+              {/* Kicker */}
+              <span
+                className="font-body text-xs uppercase tracking-[0.22em] px-4 py-1.5 rounded-full"
+                style={{ color: 'rgba(194,203,82,0.8)', background: 'rgba(194,203,82,0.08)', border: '1px solid rgba(194,203,82,0.18)' }}
+              >
+                Newsletter
+              </span>
+
+              <div className="flex flex-col gap-2">
+                <p className="font-display font-bold" style={{ color: "#F5F1E6", fontSize: 'clamp(1.3rem, 2.8vw, 1.75rem)', lineHeight: 1.2 }}>
                   Stay close to the work
                 </p>
-                <p className="font-body text-sm" style={{ color: "rgba(245,241,230,0.52)" }}>
+                <p className="font-body text-sm leading-relaxed" style={{ color: "rgba(245,241,230,0.46)" }}>
                   Updates on projects, ideas, and the evolution of the Open Earth.
                 </p>
               </div>
-              <div className="w-full md:w-auto">
-                <SubscribeForm variant="footer" source="footer" />
-              </div>
+
+              <SubscribeModal />
             </div>
           </div>
 

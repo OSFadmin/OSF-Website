@@ -391,8 +391,7 @@ export default function GaiaArchitecture() {
       <section className="py-24 px-6" style={{ background: '#0D1F17' }}>
         <div className="max-w-5xl mx-auto">
 
-          {/* Pre-button context + toggle — offset on lg to align with whiteboard panel */}
-          <div className="lg:pl-[200px]">
+          {/* Pre-button context + toggle */}
           <div className="text-center mb-9 max-w-2xl mx-auto">
             <p className="text-xs uppercase tracking-[0.2em] font-body mb-4" style={{ color: '#6E8B3D' }}>
               The living structure
@@ -430,7 +429,6 @@ export default function GaiaArchitecture() {
               </svg>
             )}
           </div>
-          </div>{/* end lg:pl-[200px] */}
 
           {/* Expand wrapper */}
           <div style={{

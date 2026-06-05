@@ -50,13 +50,25 @@ const initiatives: { tag: string; title: string; desc: string; href?: string; im
   },
 ];
 
-const completed = [
+const completed: { tag: string; title: string; image?: string; desc: string; href?: string; placeholder?: boolean }[] = [
   {
     tag: 'Open Framework · Complete',
     title: 'Open Earth Culture',
     image: '/open-earth-culture-preview.png',
-    desc: 'Open Earth Culture is the foundational framework that articulates the values, principles, and living practices of the Open Earth movement. It describes how people show up within commons-based collaboration — the commitments, relationships, and ways of working that make regenerative systems possible. Published as an open framework, it is freely available for communities and organisations to learn from, adapt, and build upon.',
+    desc: 'The foundational values framework for the Open Earth movement — articulating the principles, commitments, and ways of working that make commons-based collaboration possible. Published as an open framework for communities to adapt and build upon.',
     href: '/culture',
+  },
+  {
+    tag: 'Innovation Environment · Paused',
+    title: 'FLOWRA',
+    image: '/projects/FLOWRA_Header_Image.png',
+    desc: 'A flagship Open Earth innovation environment concept — a living-lab for prototyping regenerative technologies, holistic living systems, and commons-based approaches to land, resources, and community life. Currently paused while the broader Open Infrastructure Stack is developed.',
+  },
+  {
+    tag: '',
+    title: '',
+    desc: '',
+    placeholder: true,
   },
 ];
 
@@ -272,34 +284,73 @@ export default function Projects() {
               Completed projects
             </h2>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {completed.map((proj, i) => (
-              <Link key={i} href={proj.href} className="glass-card overflow-hidden flex flex-col no-underline group">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
-                  src={proj.image}
-                  alt={proj.title}
-                  style={{ width: '100%', height: '240px', objectFit: 'cover', display: 'block' }}
-                />
-                <div className="p-7 flex flex-col flex-1">
-                  <span
-                    className="text-xs uppercase tracking-widest font-body px-2.5 py-1 rounded-full mb-4 inline-block self-start"
-                    style={{ background: statusColors['Complete'], color: 'var(--forest)' }}
-                  >
-                    {proj.tag}
-                  </span>
-                  <h3 className="font-display font-bold text-xl mb-3 group-hover:opacity-75 transition-opacity" style={{ color: 'var(--ink)' }}>
-                    {proj.title}
-                  </h3>
-                  <p className="font-body text-sm leading-relaxed flex-1" style={{ color: 'var(--muted)' }}>
-                    {proj.desc}
-                  </p>
-                  <span className="font-body text-sm font-medium mt-5 inline-block" style={{ color: 'var(--pine)' }}>
-                    Read more →
-                  </span>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {completed.map((proj, i) => {
+              if (proj.placeholder) {
+                return (
+                  <div
+                    key={i}
+                    className="glass-card overflow-hidden flex flex-col"
+                    style={{ border: '1.5px dashed rgba(110,139,61,0.25)', background: 'transparent', minHeight: '320px' }}
+                  />
+                );
+              }
+              const cardContent = (
+                <>
+                  {proj.image ? (
+                    // eslint-disable-next-line @next/next/no-img-element
+                    <img
+                      src={proj.image}
+                      alt={proj.title}
+                      style={{ width: '100%', height: '180px', objectFit: 'cover', display: 'block' }}
+                    />
+                  ) : (
+                    <div
+                      style={{
+                        width: '100%',
+                        height: '180px',
+                        background: 'linear-gradient(135deg, rgba(30,70,52,0.6) 0%, rgba(13,31,23,0.9) 100%)',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                      }}
+                    >
+                      <span className="font-display font-bold tracking-[0.2em] uppercase" style={{ color: 'rgba(245,241,230,0.18)', fontSize: '1.6rem' }}>
+                        {proj.title}
+                      </span>
+                    </div>
+                  )}
+                  <div className="p-7 flex flex-col flex-1">
+                    <div className="flex items-center gap-2 mb-4">
+                      <span className="text-xs uppercase tracking-widest font-body px-2.5 py-1 rounded-full"
+                        style={{ background: statusColors['Complete'], color: 'var(--forest)' }}>
+                        {proj.tag}
+                      </span>
+                    </div>
+                    <h3 className="font-display font-semibold text-lg mb-3 group-hover:opacity-75 transition-opacity" style={{ color: 'var(--ink)' }}>
+                      {proj.title}
+                    </h3>
+                    <p className="font-body text-sm leading-relaxed flex-1" style={{ color: 'var(--muted)' }}>
+                      {proj.desc}
+                    </p>
+                    {proj.href && (
+                      <span className="font-body text-sm font-medium mt-5 inline-block" style={{ color: 'var(--pine)' }}>
+                        Read more →
+                      </span>
+                    )}
+                  </div>
+                </>
+              );
+              return proj.href ? (
+                <Link key={i} href={proj.href} className="glass-card overflow-hidden flex flex-col no-underline group">
+                  {cardContent}
+                </Link>
+              ) : (
+                <div key={i} className="glass-card overflow-hidden flex flex-col group">
+                  {cardContent}
                 </div>
-              </Link>
-            ))}
+              );
+            })}
           </div>
         </div>
       </section>

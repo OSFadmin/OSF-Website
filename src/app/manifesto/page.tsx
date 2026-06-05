@@ -76,35 +76,39 @@ export default function Manifesto() {
       {/* The five principles */}
       <section className="py-24 px-6" style={{ background: 'var(--cream)' }}>
         <div className="max-w-4xl mx-auto">
-          <div className="text-center mb-16">
-            <p className="text-xs uppercase tracking-[0.2em] font-body mb-3" style={{ color: 'var(--sage)' }}>
-              The Open Philosophy
-            </p>
-            <h2 className="font-display font-bold" style={{ color: 'var(--ink)', fontSize: 'clamp(1.8rem, 3.2vw, 2.6rem)' }}>
-              Five principles
-            </h2>
+          <div className="flex items-baseline gap-6 mb-12">
+            <div>
+              <p className="text-xs uppercase tracking-[0.2em] font-body mb-2" style={{ color: 'var(--sage)' }}>
+                The Open Philosophy
+              </p>
+              <h2 className="font-display font-bold" style={{ color: 'var(--ink)', fontSize: 'clamp(1.8rem, 3.2vw, 2.6rem)' }}>
+                Five principles
+              </h2>
+            </div>
           </div>
 
-          <div className="space-y-6">
+          <div style={{ borderTop: '1px solid rgba(26,42,35,0.1)' }}>
             {principles.map((p, i) => (
               <div
                 key={i}
-                className="glass-card p-8 flex flex-col md:flex-row gap-8 items-start"
+                className="grid gap-x-8 py-6 items-baseline"
+                style={{
+                  gridTemplateColumns: '2.5rem 1fr 2fr',
+                  borderBottom: '1px solid rgba(26,42,35,0.1)',
+                }}
               >
-                <div
-                  className="shrink-0 font-display font-bold text-4xl md:text-5xl leading-none"
-                  style={{ color: 'rgba(183,162,75,0.2)' }}
+                <span
+                  className="font-body text-xs tracking-widest"
+                  style={{ color: 'rgba(183,162,75,0.55)' }}
                 >
                   {p.num}
-                </div>
-                <div>
-                  <h3 className="font-display font-bold text-xl mb-3" style={{ color: 'var(--ink)' }}>
-                    {p.title}
-                  </h3>
-                  <p className="font-body text-base leading-relaxed" style={{ color: 'var(--muted)' }}>
-                    {p.body}
-                  </p>
-                </div>
+                </span>
+                <h3 className="font-display font-bold text-base" style={{ color: 'var(--ink)' }}>
+                  {p.title}
+                </h3>
+                <p className="font-body text-sm leading-relaxed" style={{ color: 'var(--muted)' }}>
+                  {p.body}
+                </p>
               </div>
             ))}
           </div>

@@ -297,8 +297,24 @@ export default function Home() {
       </section>
 
       {/* ── Culture teaser ───────────────────────────── */}
-      <section className="py-24 md:py-32 px-6" style={{ background: '#2C5E47' }}>
+      <section className="pt-10 md:pt-14 pb-24 md:pb-32 px-6" style={{ background: '#2C5E47' }}>
         <div className="max-w-7xl mx-auto">
+
+          {/* Featured label */}
+          <div className="flex items-center gap-4 mb-10 md:mb-14">
+            <div style={{ flex: 1, height: '1px', background: 'rgba(194,203,82,0.2)' }} />
+            <span
+              className="inline-flex items-center gap-2 font-body text-xs uppercase tracking-[0.2em] px-4 py-2 rounded-full shrink-0"
+              style={{ background: 'rgba(194,203,82,0.1)', border: '1px solid rgba(194,203,82,0.3)', color: 'rgba(194,203,82,0.85)' }}
+            >
+              <svg viewBox="0 0 10 10" width="8" fill="none" aria-hidden="true">
+                <circle cx="5" cy="5" r="3" fill="rgba(194,203,82,0.9)" />
+                <circle cx="5" cy="5" r="5" stroke="rgba(194,203,82,0.35)" strokeWidth="0.8" fill="none" />
+              </svg>
+              Featured Project
+            </span>
+            <div style={{ flex: 1, height: '1px', background: 'rgba(194,203,82,0.2)' }} />
+          </div>
 
           {/* Top row: text + image */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-14 md:gap-20 items-center mb-12 md:mb-16">
@@ -553,7 +569,7 @@ export default function Home() {
       {/* ── Manifesto teaser ─────────────────────────── */}
       <section className="py-24 md:py-32 px-6" style={{ background: '#182B1E' }}>
         <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-14 md:gap-20 items-center">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-0 md:gap-2 items-center">
 
             {/* Cover image */}
             <div className="flex items-center justify-center">
@@ -577,7 +593,7 @@ export default function Home() {
             </div>
 
             {/* Text */}
-            <div>
+            <div style={{ maxWidth: '520px' }}>
               <p className="text-xs uppercase tracking-[0.22em] font-body mb-5" style={{ color: 'rgba(194,203,82,0.75)' }}>
                 Our foundational document
               </p>

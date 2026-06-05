@@ -288,11 +288,7 @@ export default function Projects() {
             {completed.map((proj, i) => {
               if (proj.placeholder) {
                 return (
-                  <div
-                    key={i}
-                    className="glass-card overflow-hidden flex flex-col"
-                    style={{ border: '1.5px dashed rgba(110,139,61,0.25)', background: 'transparent', minHeight: '320px' }}
-                  />
+                  <div key={i} />
                 );
               }
               const cardContent = (

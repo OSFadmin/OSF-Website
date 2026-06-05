@@ -201,7 +201,7 @@ export default function Projects() {
                   {item.image && (
                     <div
                       className="w-full flex items-center justify-center mb-6 rounded-xl overflow-hidden"
-                      style={{ background: '#0D1F17', height: '140px' }}
+                      style={{ background: '#F5F1E6', height: '140px' }}
                     >
                       {/* eslint-disable-next-line @next/next/no-img-element */}
                       <img

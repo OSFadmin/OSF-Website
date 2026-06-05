@@ -35,12 +35,12 @@ const featured = [
   },
 ];
 
-const initiatives: { tag: string; title: string; desc: string; href?: string }[] = [
+const initiatives: { tag: string; title: string; desc: string; href?: string; image?: string }[] = [
   {
-    tag: 'Commons Innovation Environment · San Francisco',
-    title: 'Project Apollo',
-    desc: "A Commons Innovation Environment in the heart of downtown San Francisco — developed with the Flourishing Systems Foundation, where lab operators and innovators participate as commons contributors. OSF is working with Apollo to implement commons-based systems: OPAL for the innovation commons, PASEO for lab-operator participation, and a localised trust stewarding the facility's collective outputs.",
-    href: '/projects/project-apollo',
+    tag: 'Core Partner · Commons Organization',
+    title: 'Planetir',
+    image: '/projects/planetir-logo.png',
+    desc: 'Planetir is an AI-native, steward-led ecosystem platform that connects people, knowledge, capital, and opportunities for collaboration — building the digital home where communities deepen connection and co-create regenerative futures. Its AI amplifies collective intelligence through matchmaking, wisdom exchange, and resource sharing across communities. Planetir is a commons-aligned organization and a natural early candidate for PASEO participation, with its platform and communities contributing directly into Gaia Commons.',
   },
 ];
 
@@ -198,6 +198,19 @@ export default function Projects() {
             {initiatives.map((item, i) => {
               const inner = (
                 <>
+                  {item.image && (
+                    <div
+                      className="w-full flex items-center justify-center mb-6 rounded-xl overflow-hidden"
+                      style={{ background: '#0D1F17', height: '140px' }}
+                    >
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
+                      <img
+                        src={item.image}
+                        alt={item.title}
+                        style={{ maxHeight: '90px', maxWidth: '70%', objectFit: 'contain', display: 'block' }}
+                      />
+                    </div>
+                  )}
                   <span
                     className="text-xs uppercase tracking-widest font-body px-2.5 py-1 rounded-full mb-5 inline-block"
                     style={{ background: 'rgba(30,70,52,0.1)', color: 'var(--forest)' }}

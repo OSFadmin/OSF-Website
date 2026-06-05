@@ -54,7 +54,7 @@ const completed: { tag: string; title: string; image?: string; desc: string; hre
   {
     tag: 'Open Framework · Complete',
     title: 'Open Earth Culture',
-    image: '/open-earth-culture-preview.png',
+    image: '/projects/Open_Earth_Culture_Header_Image.png',
     desc: 'The foundational values framework for the Open Earth movement — articulating the principles, commitments, and ways of working that make commons-based collaboration possible. Published as an open framework for communities to adapt and build upon.',
     href: '/culture',
   },

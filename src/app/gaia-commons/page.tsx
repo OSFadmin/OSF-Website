@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import GaiaArchitecture from '@/components/GaiaArchitecture';
 
 export const metadata = { title: 'Gaia Commons — Open Systems Foundation' };
 
@@ -224,40 +225,8 @@ export default function GaiaCommons() {
         </div>
       </section>
 
-      {/* GaiaOps */}
-      <section className="py-24 px-6" style={{ background: '#0D1F17' }}>
-        <div className="max-w-5xl mx-auto">
-          <div className="text-center mb-10">
-            <p className="text-xs uppercase tracking-[0.2em] font-body mb-4" style={{ color: '#6E8B3D' }}>
-              The operational backbone
-            </p>
-            <h2 className="font-display font-bold mb-6" style={{ color: '#F5F1E6', fontSize: 'clamp(1.8rem, 3.2vw, 2.6rem)' }}>
-              GaiaOps
-            </h2>
-            <p className="font-body text-base leading-relaxed mb-4 max-w-2xl mx-auto" style={{ color: 'rgba(245,241,230,0.65)' }}>
-              GaiaOps is the operational platform within Gaia Commons — the substrate that lets teams, working groups, organisations, and communities coordinate as one living system.
-            </p>
-            <p className="font-body text-base leading-relaxed mb-10 max-w-2xl mx-auto" style={{ color: 'rgba(245,241,230,0.65)' }}>
-              The regenerative movement has more aligned people and good ideas than ever — what it lacks is coordination infrastructure built for it. GaiaOps is built for exactly that.
-            </p>
-          </div>
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            src="/projects/gaiaops.png"
-            alt="GaiaOps"
-            style={{ width: '100%', height: 'auto', display: 'block', borderRadius: '16px', marginBottom: '2.5rem' }}
-          />
-          <div className="text-center">
-            <Link
-              href="/projects"
-              className="font-body font-medium text-sm transition-opacity hover:opacity-60"
-              style={{ color: '#6E8B3D' }}
-            >
-              Learn about GaiaOps on the projects page →
-            </Link>
-          </div>
-        </div>
-      </section>
+      {/* Live Architecture */}
+      <GaiaArchitecture />
 
       {/* CTA */}
       <section className="py-24 px-6 text-center" style={{ background: '#1E4634' }}>

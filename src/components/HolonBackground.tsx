@@ -66,19 +66,24 @@ export default function HolonBackground() {
     if (!el) return;
     let tx = 0, ty = 0, cx = 0, cy = 0, raf = 0;
 
-    const onMove = (e: MouseEvent) => {
-      tx = (e.clientX / window.innerWidth  - 0.5) * 9;
-      ty = (e.clientY / window.innerHeight - 0.5) * 6;
-    };
-
     const tick = () => {
       cx += (tx - cx) * 0.035;
       cy += (ty - cy) * 0.035;
       el.style.transform = `translate(${cx.toFixed(2)}px,${cy.toFixed(2)}px)`;
-      raf = requestAnimationFrame(tick);
+      // Self-terminate once converged — restarts on next mousemove
+      if (Math.abs(tx - cx) > 0.05 || Math.abs(ty - cy) > 0.05) {
+        raf = requestAnimationFrame(tick);
+      } else {
+        raf = 0;
+      }
     };
 
-    raf = requestAnimationFrame(tick);
+    const onMove = (e: MouseEvent) => {
+      tx = (e.clientX / window.innerWidth  - 0.5) * 9;
+      ty = (e.clientY / window.innerHeight - 0.5) * 6;
+      if (!raf) raf = requestAnimationFrame(tick);
+    };
+
     window.addEventListener('mousemove', onMove, { passive: true });
     return () => { cancelAnimationFrame(raf); window.removeEventListener('mousemove', onMove); };
   }, []);

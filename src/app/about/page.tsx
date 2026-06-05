@@ -64,9 +64,9 @@ export default function About() {
             {/* Quick facts */}
             <div className="grid grid-cols-3 gap-3">
               {[
-                { val: 'Vaduz', label: 'Registered in Liechtenstein' },
+                { val: 'Vaduz', label: 'Reg. Liechtenstein — approved 2026' },
                 { val: 'Open', label: 'Purpose & outputs' },
-                { val: '2026', label: 'Year established' },
+                { val: '2024', label: 'Initiated · filed 2025 · approved 2026' },
               ].map((fact, i) => (
                 <div
                   key={i}

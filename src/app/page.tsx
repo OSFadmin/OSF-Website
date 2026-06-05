@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import PullQuote from '@/components/PullQuote';
 import CtaBand from '@/components/CtaBand';
 import HeroBackground from '@/components/HeroBackground';
@@ -31,7 +32,7 @@ function PillarCard({ icon, title, description, delay, image }: {
     >
       {image && (
         <div className="feature-card-photo" aria-hidden="true">
-          <img src={image} alt="" />
+          <img src={image} alt="" loading="lazy" />
         </div>
       )}
       <div className="feature-card-content flex flex-col flex-grow">
@@ -71,18 +72,18 @@ const stats: Array<{ value: string; label: string; sub: string; sub2?: string }>
   {
     value: '2024',
     label: 'Initiated',
-    sub: 'Reg. Liechtenstein 2025',
+    sub: 'Filed Liechtenstein 2025 · Approved 2026',
     sub2: '501(c)(3) Partner — USA',
   },
 ];
 
 const partners = [
-  { name: 'DigiHub.Li',                          type: 'Partner',       logo: '/partners/digihub.png' },
-  { name: 'Flourishing Systems Foundation',       type: 'Partner',       logo: '/partners/flourishing.png' },
-  { name: 'Planetir',                             type: 'Collaborator',  logo: '/partners/planetir.jpg' },
-  { name: 'P2P Foundation',                       type: 'Partner',       logo: '/partners/p2p.svg' },
-  { name: 'The Most Important Conversations',     type: 'Partner',       logo: '/partners/tmic.webp' },
-  { name: 'Project Weave',                        type: 'Collaborator',  logo: '/partners/weave.png' },
+  { name: 'DigiHub.Li',                          logo: '/partners/digihub.png' },
+  { name: 'Flourishing Systems Foundation',       logo: '/partners/flourishing.png' },
+  { name: 'Planetir',                             logo: '/partners/planetir.png' },
+  { name: 'P2P Foundation',                       logo: '/partners/p2p.svg' },
+  { name: 'The Most Important Conversations',     logo: '/partners/tmic.webp' },
+  { name: 'Project Weave',                        logo: '/partners/weave.png' },
 ];
 
 export default function Home() {
@@ -273,24 +274,24 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── Pull quote ───────────────────────────────── */}
-      <section style={{ background: 'var(--cream)' }}>
+      {/* ── Pull quote + Infographic ─────────────────── */}
+      <section style={{ background: '#072b24' }}>
         <PullQuote
           quote="If all willing people can easily exchange best practices, share innovations, and work together toward the goal we share — we reach it far faster through the power of the collective field."
           attribution="Open Earth Manifesto"
+          dark
         />
-      </section>
-
-      {/* ── Infographic strip ────────────────────────── */}
-      <section className="px-6 md:px-10 pt-0 pb-14 md:pb-20 -mt-6 md:-mt-10" style={{ background: 'var(--cream)' }}>
-        <div className="max-w-7xl mx-auto flex justify-center">
-          <div style={{ borderRadius: '20px', overflow: 'hidden', maxWidth: '81%', width: '100%' }}>
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src="/open-earth-loop-infographic.png"
-              alt="Open Earth · Virtuous Cycle"
-              style={{ width: '100%', height: 'auto', display: 'block' }}
-            />
+        <div className="px-6 md:px-10 pb-16 md:pb-24">
+          <div className="max-w-7xl mx-auto flex justify-center">
+            <div style={{ maxWidth: '95%', width: '100%' }}>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="/Open_Earth_Regenerative_Flow_transparent_clean.png"
+                alt="Open Earth · Regenerative Flow"
+                loading="lazy"
+                style={{ width: '100%', height: 'auto', display: 'block' }}
+              />
+            </div>
           </div>
         </div>
       </section>
@@ -331,10 +332,13 @@ export default function Home() {
 
             {/* Culture preview image with pill */}
             <div className="relative" style={{ borderRadius: '20px', overflow: 'hidden' }}>
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
+                <Image
                 src="/open-earth-culture-preview.png"
                 alt="The Open Earth as an Embodied Philosophy"
+                width={2454}
+                height={1736}
+                loading="lazy"
+                sizes="(max-width: 768px) 100vw, 50vw"
                 style={{ width: '100%', height: 'auto', display: 'block', borderRadius: '20px' }}
               />
               <div className="absolute bottom-4 left-4">
@@ -423,40 +427,52 @@ export default function Home() {
       </section>
 
       {/* ── Gaia Commons feature ─────────────────────── */}
-      <section className="py-24 md:py-32 px-6" style={{ background: 'var(--bone)' }}>
-        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+      <section className="relative py-24 md:py-32 px-6 overflow-hidden" style={{ background: '#0D1F17' }}>
+        {/* Fractal background image */}
+        <Image
+          src="/fractal-commons.png"
+          alt=""
+          aria-hidden="true"
+          fill
+          loading="lazy"
+          className="pointer-events-none object-cover"
+        />
+
+        <div className="relative max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-16 items-center" style={{ zIndex: 1 }}>
 
           {/* Gaia Commons logo */}
           <div className="order-2 md:order-1 flex items-center justify-center py-8">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
+            <Image
               src="/gaia-commons-logo.png"
               alt="Gaia Commons"
-              style={{ width: '100%', maxWidth: '320px', height: 'auto', display: 'block' }}
+              width={320}
+              height={320}
+              loading="lazy"
+              style={{ width: '100%', maxWidth: '320px', height: 'auto', display: 'block', filter: 'brightness(1.1)' }}
             />
           </div>
 
           <div className="order-1 md:order-2">
-            <p className="text-xs uppercase tracking-[0.2em] font-body mb-4" style={{ color: 'var(--sage)' }}>Flagship Initiative</p>
+            <p className="text-xs uppercase tracking-[0.2em] font-body mb-4" style={{ color: '#4BA87A' }}>Flagship Initiative</p>
             <h2 className="font-display font-bold leading-tight mb-6"
-              style={{ color: 'var(--ink)', fontSize: 'clamp(1.9rem, 3.5vw, 3rem)' }}>
+              style={{ color: '#1A2A23', fontSize: 'clamp(1.9rem, 3.5vw, 3rem)' }}>
               Gaia Commons
             </h2>
-            <p className="font-body text-base leading-relaxed mb-5" style={{ color: 'var(--muted)' }}>
+            <p className="font-body text-base leading-relaxed mb-5" style={{ color: '#1A2A23' }}>
               Gaia Commons is a living commons network and infrastructure stack uniting individuals and organisations to co-create and promote regenerative solutions. It aggregates, develops, and deploys the frameworks for stewarding our planet as a living system.
             </p>
-            <p className="font-body text-base leading-relaxed mb-8" style={{ color: 'var(--muted)' }}>
+            <p className="font-body text-base leading-relaxed mb-8" style={{ color: '#1A2A23' }}>
               It is the most concentrated expression of the Open Earth vision — the core layer attempting to embed the Open Philosophy in every aspect of economy, technology, and culture. The focal layer we steward with most resources, care, and focus. A long-term meta-initiative made up of many projects underway and planned.
             </p>
             <div className="flex flex-wrap gap-4">
               <Link href="/gaia-commons"
-                className="inline-flex items-center px-8 py-3 rounded-full font-body font-medium text-sm transition-all hover:shadow-md"
-                style={{ background: 'var(--pine)', color: '#F5F1E6' }}>
+                className="inline-flex items-center px-8 py-3 rounded-full font-body font-medium text-sm transition-all hover:shadow-lg hover:scale-[1.02]"
+                style={{ background: '#C2CB52', color: '#1A2A23' }}>
                 Discover Gaia Commons →
               </Link>
               <Link href="/projects"
-                className="inline-flex items-center px-8 py-3 rounded-full font-body font-medium text-sm transition-all hover:opacity-70"
-                style={{ border: '1px solid var(--border)', color: 'var(--pine)' }}>
+                className="inline-flex items-center px-8 py-3 rounded-full font-body font-medium text-sm transition-all hover:opacity-80"
+                style={{ border: '1px solid rgba(245,241,230,0.25)', color: 'rgba(245,241,230,0.8)' }}>
                 View all projects
               </Link>
             </div>
@@ -569,7 +585,7 @@ export default function Home() {
 
       {/* ── Partners & supporters ────────────────────── */}
       <section className="py-24 px-6" style={{ background: 'var(--bone)' }}>
-        <div className="max-w-7xl mx-auto">
+        <div className="max-w-5xl mx-auto text-center">
           <div className="mb-12">
             <p className="text-xs uppercase tracking-[0.22em] font-body mb-3" style={{ color: 'var(--sage)' }}>
               Trusted network
@@ -578,36 +594,41 @@ export default function Home() {
               style={{ color: 'var(--ink)', fontSize: 'clamp(1.8rem, 3.2vw, 2.6rem)' }}>
               Partners &amp; collaborators
             </h2>
-            <p className="font-body text-base max-w-xl" style={{ color: 'var(--muted)' }}>
+            <p className="font-body text-base mx-auto" style={{ color: 'var(--muted)', maxWidth: '36rem' }}>
               A growing network of aligned organisations and initiatives building toward an Open Earth.
             </p>
           </div>
 
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
+          <div
+            className="rounded-2xl overflow-hidden grid grid-cols-2 md:grid-cols-3 gap-px"
+            style={{ background: 'rgba(26,42,35,0.09)' }}
+          >
             {partners.map((partner, i) => (
-              <div key={i} className="glass-card p-7 flex flex-col gap-5">
-                {/* Logo — clean, no box */}
-                <div className="h-16 flex items-center">
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img
-                    src={partner.logo!}
-                    alt={partner.name}
-                    style={{
-                      maxHeight: partner.name === 'Project Weave' ? '72px' : '56px',
-                      maxWidth: partner.name === 'Project Weave' ? '100%' : '85%',
-                      objectFit: 'contain',
-                      display: 'block',
-                    }}
-                  />
-                </div>
-                <div>
-                  <h3 className="font-display font-semibold mb-1" style={{ color: 'var(--ink)', fontSize: '1rem', lineHeight: 1.3 }}>
+              <div
+                key={i}
+                className="group flex flex-col items-center justify-center gap-4 px-8 py-12 transition-colors hover:bg-white"
+                style={{ background: '#F8F5EE' }}
+              >
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src={partner.logo!}
+                  alt={partner.name}
+                  loading="lazy"
+                  className="transition-opacity group-hover:opacity-100"
+                  style={{
+                    maxHeight: '98px',
+                    maxWidth: '221px',
+                    objectFit: 'contain',
+                    display: 'block',
+                    margin: '0 auto',
+                    opacity: 0.82,
+                  }}
+                />
+                {partner.name === 'Flourishing Systems Foundation' && (
+                  <p className="font-body font-semibold text-center leading-snug" style={{ color: 'var(--ink)', fontSize: '0.88rem' }}>
                     {partner.name}
-                  </h3>
-                  <p className="text-xs uppercase tracking-[0.12em] font-body" style={{ color: 'var(--gold)' }}>
-                    {partner.type}
                   </p>
-                </div>
+                )}
               </div>
             ))}
           </div>
@@ -638,8 +659,8 @@ export default function Home() {
               {
                 tag: 'Within Gaia Commons',
                 title: 'GaiaOps',
-                href: '/projects',
-                image: '/projects/gaiaops.png',
+                href: '/projects/gaiaops',
+                image: '/projects/GaiaOPS_Article_Cover.png',
                 fit: 'cover' as const,
                 bg: 'transparent',
                 desc: 'The operational platform that lets teams, working groups, and communities within Gaia Commons coordinate as one living system.',
@@ -647,8 +668,8 @@ export default function Home() {
               {
                 tag: 'Within Gaia Commons',
                 title: 'GaiaOS',
-                href: '/projects',
-                image: '/projects/gaiaos.png',
+                href: '/projects/gaiaos',
+                image: '/projects/GaiaOS_Article_Cover.png',
                 fit: 'cover' as const,
                 bg: 'transparent',
                 desc: 'The operating system layer of Gaia Commons — shared infrastructure, protocols, and interfaces for the broader commons network.',
@@ -656,7 +677,7 @@ export default function Home() {
               {
                 tag: 'Open Infrastructure',
                 title: 'Open Peer Access License (OPAL)',
-                href: '/projects',
+                href: '/projects/opal',
                 image: '/projects/opal.png',
                 fit: 'contain' as const,
                 bg: '#ffffff',
@@ -665,7 +686,7 @@ export default function Home() {
               {
                 tag: 'Open Infrastructure',
                 title: 'PASEOs',
-                href: '/projects',
+                href: '/projects/paseos',
                 image: '/projects/paseo.png',
                 fit: 'contain' as const,
                 bg: '#ffffff',
@@ -677,6 +698,7 @@ export default function Home() {
                 <img
                   src={proj.image}
                   alt={proj.title}
+                  loading="lazy"
                   style={{ width: '100%', height: '200px', objectFit: proj.fit, display: 'block', borderRadius: '16px 16px 0 0', background: proj.bg, padding: proj.fit === 'contain' ? '12px' : '0' }}
                 />
                 <div className="p-6">
@@ -703,7 +725,7 @@ export default function Home() {
       <CtaBand
         headline="Partner with us"
         text="The Open Systems Foundation invites generous benefactors and aligned partners to help catalyse the paradigm shift toward an Open Earth."
-        buttonText="Partner with us"
+        buttonText="Get in touch"
         buttonLink="/contact"
         secondaryButtonText="Support the mission"
         secondaryButtonLink="/contact"

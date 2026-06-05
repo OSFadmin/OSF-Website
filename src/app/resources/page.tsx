@@ -87,7 +87,8 @@ export default function Resources() {
               title="Articles of Association"
               description="The legal founding document of the Open Systems Foundation — our deed and constitutional framework (Liechtenstein PGR)."
               format="PDF"
-              url="#"
+              url="/downloads/OSF_Articles_of_Association_EN.pdf"
+              download
             />
             <ResourceCard
               title="Strategic Drivers"

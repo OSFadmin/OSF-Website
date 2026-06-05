@@ -1,9 +1,10 @@
 interface PullQuoteProps {
   quote: string;
   attribution?: string;
+  dark?: boolean;
 }
 
-export default function PullQuote({ quote, attribution }: PullQuoteProps) {
+export default function PullQuote({ quote, attribution, dark }: PullQuoteProps) {
   return (
     <div className="py-16 md:py-24 px-6 max-w-4xl mx-auto text-center">
       {/* Decorative element */}
@@ -21,7 +22,7 @@ export default function PullQuote({ quote, attribution }: PullQuoteProps) {
       <blockquote
         className="font-display font-semibold italic leading-snug mb-8"
         style={{
-          color: 'var(--ink)',
+          color: dark ? '#F5F1E6' : 'var(--ink)',
           fontSize: 'clamp(1.5rem, 3.2vw, 2.4rem)',
           lineHeight: 1.35,
         }}
@@ -32,7 +33,7 @@ export default function PullQuote({ quote, attribution }: PullQuoteProps) {
       {attribution && (
         <cite
           className="block text-xs uppercase tracking-[0.2em] font-body not-italic"
-          style={{ color: 'var(--muted)' }}
+          style={{ color: dark ? 'rgba(245,241,230,0.55)' : 'var(--muted)' }}
         >
           — {attribution}
         </cite>

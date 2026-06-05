@@ -42,6 +42,12 @@ const initiatives: { tag: string; title: string; desc: string; href?: string; im
     image: '/projects/planetir-logo.png',
     desc: 'Planetir is an AI-native, steward-led ecosystem platform that connects people, knowledge, capital, and opportunities for collaboration — building the digital home where communities deepen connection and co-create regenerative futures. Its AI amplifies collective intelligence through matchmaking, wisdom exchange, and resource sharing across communities. Planetir is a commons-aligned organization and a natural early candidate for PASEO participation, with its platform and communities contributing directly into Gaia Commons.',
   },
+  {
+    tag: 'Ecosystem Partner · Active · Sponsorship',
+    title: 'Project Weave',
+    image: '/projects/weave-logo.png',
+    desc: 'Project Weave funds the missing interoperability layer for the human internet — helping existing open identity and trust projects connect through shared protocols rather than isolated platforms. By supporting integration across self-sovereign identity, verifiable credentials, and trust registries, Project Weave enables people and communities to own their networks, verify trust across applications, and coordinate without being locked inside centralized platforms.',
+  },
 ];
 
 const statusColors: Record<string, string> = {

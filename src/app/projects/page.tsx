@@ -50,9 +50,20 @@ const initiatives: { tag: string; title: string; desc: string; href?: string; im
   },
 ];
 
+const completed = [
+  {
+    tag: 'Open Framework · Complete',
+    title: 'Open Earth Culture',
+    image: '/open-earth-culture-preview.png',
+    desc: 'Open Earth Culture is the foundational framework that articulates the values, principles, and living practices of the Open Earth movement. It describes how people show up within commons-based collaboration — the commitments, relationships, and ways of working that make regenerative systems possible. Published as an open framework, it is freely available for communities and organisations to learn from, adapt, and build upon.',
+    href: '/culture',
+  },
+];
+
 const statusColors: Record<string, string> = {
   Active: 'rgba(110,139,61,0.15)',
   Beta: 'rgba(183,162,75,0.15)',
+  Complete: 'rgba(183,162,75,0.12)',
 };
 
 export default function Projects() {
@@ -193,7 +204,7 @@ export default function Projects() {
         <div className="max-w-7xl mx-auto">
           <div className="mb-14">
             <p className="text-xs uppercase tracking-[0.2em] font-body mb-3" style={{ color: 'var(--sage)' }}>
-              Foundation initiatives
+              Collaborations
             </p>
             <h2 className="font-display font-bold mb-4" style={{ color: 'var(--ink)', fontSize: 'clamp(1.8rem, 3.2vw, 2.6rem)' }}>
               More from the ecosystem
@@ -246,6 +257,49 @@ export default function Projects() {
                 </div>
               );
             })}
+          </div>
+        </div>
+      </section>
+
+      {/* Completed projects */}
+      <section className="py-24 px-6" style={{ background: 'var(--cream)' }}>
+        <div className="max-w-7xl mx-auto">
+          <div className="mb-14">
+            <p className="text-xs uppercase tracking-[0.2em] font-body mb-3" style={{ color: 'var(--sage)' }}>
+              Completed
+            </p>
+            <h2 className="font-display font-bold" style={{ color: 'var(--ink)', fontSize: 'clamp(1.8rem, 3.2vw, 2.6rem)' }}>
+              Completed projects
+            </h2>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {completed.map((proj, i) => (
+              <Link key={i} href={proj.href} className="glass-card overflow-hidden flex flex-col no-underline group">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src={proj.image}
+                  alt={proj.title}
+                  style={{ width: '100%', height: '240px', objectFit: 'cover', display: 'block' }}
+                />
+                <div className="p-7 flex flex-col flex-1">
+                  <span
+                    className="text-xs uppercase tracking-widest font-body px-2.5 py-1 rounded-full mb-4 inline-block self-start"
+                    style={{ background: statusColors['Complete'], color: 'var(--forest)' }}
+                  >
+                    {proj.tag}
+                  </span>
+                  <h3 className="font-display font-bold text-xl mb-3 group-hover:opacity-75 transition-opacity" style={{ color: 'var(--ink)' }}>
+                    {proj.title}
+                  </h3>
+                  <p className="font-body text-sm leading-relaxed flex-1" style={{ color: 'var(--muted)' }}>
+                    {proj.desc}
+                  </p>
+                  <span className="font-body text-sm font-medium mt-5 inline-block" style={{ color: 'var(--pine)' }}>
+                    Read more →
+                  </span>
+                </div>
+              </Link>
+            ))}
           </div>
         </div>
       </section>
